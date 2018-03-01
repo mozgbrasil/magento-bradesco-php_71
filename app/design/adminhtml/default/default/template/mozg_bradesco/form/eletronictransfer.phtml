@@ -1,0 +1,20 @@
+<?php
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+$_code=$this->getMethodCode();
+?>
+
+    <ul id="payment_form_<?php echo $_code ?>" style="display:none">
+         <li>
+            <a id="more_info_<?php echo $_code; ?>" href="https://www.bradescocomercioeletronico.com.br/conteudo/meios-pagamento/entre_contas_pj.aspx" target="_blank"><?php echo __('More information about Eletronic Transfer Bradesco') ?></a>
+        </li>
+    </ul>
+
+<div>
+</div>
+
+<script type="text/javascript">
+    console.log('<?php echo $_code ?>');
+</script>

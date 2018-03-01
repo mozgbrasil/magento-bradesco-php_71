@@ -1,0 +1,750 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config>
+    <sections>
+        <payment>
+            <groups>
+                <mozg_bradesco_abstract translate="label" module="mozg_bradesco">
+                    <label>Bradesco Default Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5000</sort_order>
+                    <frontend_class>complex</frontend_class>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_bradesco/adminhtml_system_config_fieldset_method</frontend_model>
+                    <fields>
+                        <mozg_bradesco_abstract_license type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Licenciamento</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>10</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <license translate="label">
+                                    <label>Licença para uso comercial</label>
+                                    <comment></comment>
+                                    <frontend_type>textarea</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/license</config_path>
+                                    <sort_order>8</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </license>
+                                <license_output translate="label">
+                                    <label></label>
+                                    <comment></comment>
+                                    <license_config_path>payment/mozg_bradesco_abstract/license</license_config_path>
+                                    <method_id>mozg_bradesco</method_id>
+                                    <frontend_type>text</frontend_type>
+                                    <frontend_model>mozg_base/adminhtml_system_config_form_field_license</frontend_model>
+                                    <sort_order>9</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </license_output>
+                            </fields>
+                        </mozg_bradesco_abstract_license>
+                        <mozg_bradesco_required_settings type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Required Settings</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>20</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <email translate="label comment tooltip">
+                                    <label>e-mail</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-email" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/email</config_path>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </email>
+                                <demoMode translate="label">
+                                    <label>Test/Production Mode</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-modo-teste-ou-produção" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/demoMode</config_path>
+                                    <source_model>mozg_bradesco/source_DemoModes</source_model>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </demoMode>
+                                <heading_sandbox translate="label">
+                                    <label>Sandbox</label>
+                                    <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                                    <sort_order>21</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                </heading_sandbox>
+                                <MerchantId_test translate="label comment tooltip">
+                                    <label>Merchant ID</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-merchant-id-para-o-ambiente-de-teste" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/MerchantId_test</config_path>
+                                    <sort_order>30</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </MerchantId_test>
+                                <MerchantKey_test translate="label comment tooltip">
+                                    <label>Merchant Key</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-merchant-key-ambiente-de-teste" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>obscure</frontend_type>
+                                    <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+                                    <config_path>payment/mozg_bradesco_abstract/MerchantKey_test</config_path>
+                                    <sort_order>40</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </MerchantKey_test>
+                                <heading_producao translate="label">
+                                    <label>Produção</label>
+                                    <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                                    <sort_order>41</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                </heading_producao>
+                                <MerchantId_live translate="label comment tooltip">
+                                    <label>Merchant ID</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-merchant-id-para-o-ambiente-de-produção" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/MerchantId_live</config_path>
+                                    <sort_order>50</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </MerchantId_live>
+                                <MerchantKey_live translate="label comment tooltip">
+                                    <label>Merchant Key</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-merchant-key-ambiente-de-produção" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>obscure</frontend_type>
+                                    <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+                                    <config_path>payment/mozg_bradesco_abstract/MerchantKey_live</config_path>
+                                    <sort_order>60</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </MerchantKey_live>
+                            </fields>
+                        </mozg_bradesco_required_settings>
+                        <mozg_bradesco_order_process type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Advanced: Magento Order Processing</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>43</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <order_status translate="label">
+                                    <label>Order status: order creation</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-ordem-de-criação" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/order_status</config_path>
+                                    <source_model>adminhtml/system_config_source_order_status_new</source_model>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </order_status>
+                                <payment_pre_authorized>
+                                    <label>Order status: payment authorisation</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-autorização-de-pagamento" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/payment_pre_authorized</config_path>
+                                    <source_model>adminhtml/system_config_source_order_status_newprocessing</source_model>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </payment_pre_authorized>
+                                <payment_authorized translate="label">
+                                    <label>Order status: payment confirmed</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-pagamento-confirmado" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/payment_authorized</config_path>
+                                    <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                                    <sort_order>30</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </payment_authorized>
+                                <payment_cancelled translate="label">
+                                    <label>Order status: order cancellation</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-cancelamento-de-pedido" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/payment_cancelled</config_path>
+                                    <source_model>mozg_bradesco/source_cancelModes</source_model>
+                                    <sort_order>40</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </payment_cancelled>
+                                <payment_authorized_virtual>
+                                    <label>Order status: payment capture (virtual products)</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-captura-de-pagamento-produtos-virtuais" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/payment_authorized_virtual</config_path>
+                                    <source_model>mozg_bradesco/source_status_complete</source_model>
+                                    <sort_order>50</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </payment_authorized_virtual>
+                                <refund_authorized translate="label">
+                                    <label>Order status: Mozg Refunded</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-reembolsado" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/refund_authorized</config_path>
+                                    <source_model>mozg_bradesco/source_status_refund</source_model>
+                                    <sort_order>60</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </refund_authorized>
+                                <refund_partial_authorized translate="label">
+                                    <label>Order status: Mozg partial Refunded</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-reembolsado-parcial" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/refund_partial_authorized</config_path>
+                                    <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                                    <sort_order>70</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </refund_partial_authorized>
+                                <pending_status>
+                                    <label>Order status: pending orders</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-pedidos-pendentes" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/pending_status</config_path>
+                                    <source_model>mozg_bradesco/source_status_pending</source_model>
+                                    <sort_order>80</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </pending_status>
+                                <capture_mode translate="label">
+                                    <label>Capture Delay</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-tempo-de-captura" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_captureModes</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/capture_mode</config_path>
+                                    <sort_order>90</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </capture_mode>
+                                <create_pending_invoice translate="label">
+                                    <label>Create a pending invoice (only for manual capture)</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-criar-uma-fatura-pendente-apenas-para-captura-manual" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>100</sort_order>
+                                    <config_path>payment/mozg_bradesco_abstract/create_pending_invoice</config_path>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </create_pending_invoice>
+                                <capture_on_shipment>
+                                    <label>Order status: Capture on shipment</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-capturar-no-embarque" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/capture_on_shipment</config_path>
+                                    <sort_order>110</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </capture_on_shipment>
+                                <uncancelorder translate="label">
+                                    <label>Enable Uncancel Order</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ativar-descancelar-pedido" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/uncancelorder</config_path>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>120</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>0</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </uncancelorder>
+                                <autorefundoncancel translate="label">
+                                    <label>Automatic cancel\refund when a order is canceled</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-cancelamentoreembolso-automático-quando-o-pedido-é-cancelado" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/autorefundoncancel</config_path>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>130</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>0</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </autorefundoncancel>
+                                <send_invoice_update_mail translate="label">
+                                    <label>Invoice email</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-e-mail-da-fatura" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/send_invoice_update_mail</config_path>
+                                    <sort_order>140</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </send_invoice_update_mail>
+                                <send_update_mail translate="label">
+                                    <label>Customers receive order status update email (deprecated).</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-os-clientes-recebem-e-mail-de-atualização-de-status-de-pedido" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/send_update_mail</config_path>
+                                    <sort_order>150</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </send_update_mail>
+                                <debug translate="label">
+                                    <label>Enable debug logging</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ativar-log-de-depuração" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/debug</config_path>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>160</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </debug>
+                            </fields>
+                        </mozg_bradesco_order_process>
+                        <mozg_bradesco_order_notifications type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Advanced: Mozg Bradesco Notifications</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>40</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <ignore_refund_notification>
+                                    <label>Ignore refund notification</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ignorar-notificação-de-reembolso" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>230</sort_order>
+                                    <config_path>payment/mozg_bradesco_abstract/ignore_refund_notification</config_path>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </ignore_refund_notification>
+                            </fields>
+                        </mozg_bradesco_order_notifications>
+                        <mozg_bradesco_checkout_experience type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Advanced: Checkout Experience</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>50</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <payment_cancelled_redirect>
+                                    <label>Redirect destination after cancellation</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-redirecionar-o-destino-após-o-cancelamento" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_cancelRedirect</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/payment_cancelled_redirect</config_path>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </payment_cancelled_redirect>
+                                <title_renderer>
+                                    <label>Payment method render method</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-método-de-pagamento-método-de-renderização" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_rendermode</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/title_renderer</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </title_renderer>
+                                <shopperlocale translate="label">
+                                    <label>Language locale (optional)</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-idioma-local-opcional" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/shopperlocale</config_path>
+                                    <sort_order>180</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </shopperlocale>
+                                <countryCode translate="label">
+                                    <label>ISO Country Code (optional)</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-código-do-país-iso-opcional" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/countryCode</config_path>
+                                    <sort_order>190</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </countryCode>
+                            </fields>
+                        </mozg_bradesco_checkout_experience>
+                    </fields>
+                </mozg_bradesco_abstract>
+                <mozg_bradesco_shopfacil_boleto translate="label" module="mozg_bradesco">
+                    <label>Bradesco Boleto</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5050</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_base/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_bradesco_shopfacil_boleto/active</activity_path>
+                    <fields>
+                        <mozg_bradesco_shopfacil_boleto_group_1 type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Configurações básica nativa</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>100</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                  <active translate="label">
+                                    <label>Enabled</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ativar-2" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/active</config_path>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </active>
+                                <sort_order translate="label">
+                                    <label>Sort Order</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ordem-de-exibição-2" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/sort_order</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </sort_order>
+                                <title translate="label">
+                                    <label>Title</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-título-2" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/title</config_path>
+                                    <sort_order>30</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </title>
+                                <allowspecific translate="label">
+                                    <label>Payment from applicable countries</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-pagamentos-aplicáveis-aos-países-2" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>allowspecific</frontend_type>
+                                    <sort_order>40</sort_order>
+                                    <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/allowspecific</config_path>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </allowspecific>
+                                <specificcountry translate="label">
+                                    <label>Payment from specific countries</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-pagamentos-específicos-aos-países-2" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>multiselect</frontend_type>
+                                    <sort_order>50</sort_order>
+                                    <source_model>adminhtml/system_config_source_country</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/specificcountry</config_path>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <depends><allowspecific>1</allowspecific></depends>
+                                </specificcountry>
+                            </fields>
+                        </mozg_bradesco_shopfacil_boleto_group_1>
+                        <mozg_bradesco_shopfacil_boleto_group_2 type="group" translate="label" module="mozg_bradesco">
+                            <label>Configurações para Integração</label>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>200</sort_order>
+                            <fields>
+                                <cedente>
+                                    <label>Nome do beneficiário/cedente</label>
+                                    <comment><![CDATA[<a href="#" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/cedente</config_path>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </cedente>
+                                <carteira>
+                                    <label>Carteira</label>
+                                    <comment><![CDATA[<a href="#" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/carteira</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </carteira>
+                                <vencimento>
+                                    <label>Vencimento</label>
+                                    <comment><![CDATA[<a href="#" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/vencimento</config_path>
+                                    <sort_order>30</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </vencimento>
+                                <logotipo translate="label comment">
+                                    <label>Logo</label>
+                                    <comment><![CDATA[<a href="#" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>image</frontend_type>
+                                    <backend_model>adminhtml/system_config_backend_image</backend_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/logotipo</config_path>
+                                    <upload_dir config="system/filesystem/media" scope_info="1">theme</upload_dir>
+                                    <base_url type="media" scope_info="1">theme</base_url>
+                                    <sort_order>40</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </logotipo>
+                                <mensagem_cabecalho>
+                                    <label>Mensagem de cabeçalho exibida no topo do boleto</label>
+                                    <comment><![CDATA[<a href="#" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/mensagem_cabecalho</config_path>
+                                    <sort_order>50</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </mensagem_cabecalho>
+                                <instrucoes>
+                                    <label>Instruções (máximo de três linhas)</label>
+                                    <comment><![CDATA[<a href="#" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>textarea</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/instrucoes</config_path>
+                                    <sort_order>60</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </instrucoes>
+                                <!--<mozg_bradesco_group_2_1 type="group" translate="label" module="mozg_bradesco">
+                                    <label>Registro</label>
+                                    <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                                    <frontend_type>text</frontend_type>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <sort_order>70</sort_order>
+                                    <fields>
+
+                                    </fields>
+                                </mozg_bradesco_group_2_1>-->
+                            </fields>
+                        </mozg_bradesco_shopfacil_boleto_group_2>
+                        <mozg_bradesco_shopfacil_boleto_group_3 type="group" translate="label" module="mozg_bradesco">
+                            <label>Configurações avançada</label>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>300</sort_order>
+                            <fields>
+                                <order_underpaid_status translate="label">
+                                    <label>Order status underpaid</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-não-pago" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/order_underpaid_status</config_path>
+                                    <sort_order>230</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </order_underpaid_status>
+                                <order_overpaid_status translate="label">
+                                    <label>Order status overpaid</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-pago-em-excesso" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/order_overpaid_status</config_path>
+                                    <sort_order>240</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </order_overpaid_status>
+                                <visible_type>
+                                    <label>Visible in</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-visível-em-2" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_VisibleType</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/visible_type</config_path>
+                                    <sort_order>250</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </visible_type>
+                            </fields>
+                        </mozg_bradesco_shopfacil_boleto_group_3>
+                    </fields>
+                </mozg_bradesco_shopfacil_boleto>
+                <mozg_bradesco_shopfacil_eletronictransfer translate="label" module="mozg_bradesco">
+                    <label>Bradesco EletronicTransfer</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5060</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_base/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_bradesco_shopfacil_eletronictransfer/active</activity_path>
+                    <fields>
+                        <mozg_bradesco_shopfacil_eletronictransfer_group_1 type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Configurações básica nativa</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>100</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <active translate="label">
+                                    <label>Enabled</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ativar-3" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_eletronictransfer/active</config_path>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </active>
+                                <sort_order translate="label">
+                                    <label>Sort Order</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ordem-de-exibição-3" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_eletronictransfer/sort_order</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </sort_order>
+                                <title translate="label">
+                                    <label>Title</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-título-3" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_eletronictransfer/title</config_path>
+                                    <sort_order>30</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </title>
+                                <allowspecific translate="label">
+                                    <label>Payment from applicable countries</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-pagamentos-aplicáveis-aos-países-3" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>allowspecific</frontend_type>
+                                    <sort_order>40</sort_order>
+                                    <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_eletronictransfer/allowspecific</config_path>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </allowspecific>
+                                <specificcountry translate="label">
+                                    <label>Payment from specific countries</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-pagamentos-específicos-aos-países-3" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>multiselect</frontend_type>
+                                    <sort_order>50</sort_order>
+                                    <source_model>adminhtml/system_config_source_country</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_eletronictransfer/specificcountry</config_path>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <depends><allowspecific>1</allowspecific></depends>
+                                </specificcountry>
+                            </fields>
+                        </mozg_bradesco_shopfacil_eletronictransfer_group_1>
+                        <!--<mozg_bradesco_shopfacil_eletronictransfer_group_2 type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Configurações para Integração<</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>200</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+
+                            </fields>
+                        </mozg_bradesco_shopfacil_eletronictransfer_group_2>-->
+                        <mozg_bradesco_shopfacil_eletronictransfer_group_3 type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Configurações avançada</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>300</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <order_underpaid_status translate="label">
+                                    <label>Order status underpaid</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-não-pago-1" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_eletronictransfer/order_underpaid_status</config_path>
+                                    <sort_order>230</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </order_underpaid_status>
+                                <order_overpaid_status translate="label">
+                                    <label>Order status overpaid</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-pago-em-excesso-1" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_eletronictransfer/order_overpaid_status</config_path>
+                                    <sort_order>240</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </order_overpaid_status>
+                                <visible_type>
+                                    <label>Visible in</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-visível-em-3" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_VisibleType</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_eletronictransfer/visible_type</config_path>
+                                    <sort_order>250</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </visible_type>
+                            </fields>
+                        </mozg_bradesco_shopfacil_eletronictransfer_group_3>
+                    </fields>
+                </mozg_bradesco_shopfacil_eletronictransfer>
+            </groups>
+        </payment>
+    </sections>
+</config>

@@ -1,0 +1,157 @@
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+/* Mozg Customs */
+/* Checkout Page */
+
+#co-payment-form .sp-methods dt img {
+    vertical-align: middle;
+    display: inline-block;
+}
+/*#co-payment-form .sp-methods dt { margin:0px 0 5px;}*/
+/*#co-payment-form .sp-methods dt input.radio { margin:20px 0 0 ; padding:0; }*/
+/*#co-payment-form .sp-methods dt label {background:none; padding:0 0 0 6px; }*/
+/*#co-payment-form .sp-methods dt label span { display:block; padding-top:9px;}*/
+/*.sp-methods #payment_form_mozg_bradesco_shopfacil_cc .v-fix label { float:none; vertical-align: middle;}*/
+
+.mozg-payment-method-icon {
+    margin-right: 6px;
+    margin-left: 2px;
+    border: none !important;
+    width: 66px;
+    height: 43px;
+}
+.mozg-payment-method-icon.mozg_bradesco_shopfacil_cc,
+.mozg-payment-method-icon.mozg_bradesco_shopfacil_dc,
+.mozg-payment-method-icon.mozg_bradesco_shopfacil_hpp,
+.mozg-payment-method-icon.mozg_bradesco_shopfacil_boleto,
+.mozg-payment-method-icon.mozg_bradesco_shopfacil_eletronictransfer,
+.mozg-payment-method-icon.mozg_bradesco_checkout_hpp,
+.mozg-payment-method-icon .no-mc {
+    background: url(../../images/mozg_base/payments.png) left top no-repeat;
+}
+.mozg-payment-method-icon.mozg_bradesco_shopfacil_boleto {
+    background-position: -1636px -5px;
+}
+.mozg-payment-method-icon.mozg_bradesco_shopfacil_eletronictransfer {
+    background-position: -1565px -5px;
+}
+.mozg-payment-method-icon .no-mc {
+    background-position: left top;
+}
+/* Credit Cards */
+
+.sp-methods .form-list li.mozg_bradesco_creditcard_labels {
+    margin-top: 15px;
+}
+.sp-methods .form-list li.mozg_bradesco_creditcard_labels img {
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+.mozg_bradesco_creditcard_labels img.grey {
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\' filterRes=\'800\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+ */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+    opacity: 0.2; /* FIX: Safari 5 */
+}
+.sp-methods .mozg_bradesco_input_fields {
+    clear: both;
+}
+/* Checkout */
+
+.sp-methods #payment_form_mozg_bradesco_shopfacil_hpp li {
+    margin: 0;
+}
+.sp-methods #payment_form_mozg_bradesco_shopfacil_hpp {} .sp-methods #payment_form_mozg_bradesco_shopfacil_hpp .input-box table {
+    margin-bottom: 5px;
+}
+.sp-methods #payment_form_mozg_bradesco_shopfacil_hpp .input-box table td {
+    vertical-align: middle;
+}
+.mozg-ideal-image-label {
+    display: block;
+}
+.mozg-ideal-image-label img {
+    display: inline;
+    vertical-align: middle;
+}
+/* for onepagecheckout */
+
+.payment-methods dd#container_payment_method_mozg_bradesco_shopfacil_hpp {
+    margin: 0;
+    padding: 0;
+}
+/* end for onepagecheckout */
+
+.sp-methods h3.other-payment {
+    margin-top: 15px;
+}
+.sp-methods #oneclick_payment_form_mozg_bradesco_shopfacil_oneclick {
+    padding-top: 10px;
+}
+.sp-methods #oneclick_payment_form_mozg_bradesco_shopfacil_oneclick .recurring-creditcards .recurring_type {
+    float: left;
+    vertical-align: middle;
+    height: 120px;
+}
+#payment_form_mozg_bradesco_ideal label img {
+    float: none;
+}
+.saved-cards ul li {
+    margin-bottom: 10px;
+}
+.saved-cards .btn-delete {
+    margin-top: 10px;
+}
+.sp-methods #oneclick_payment_form_mozg_bradesco_shopfacil_oneclick .creditcard-block,
+.saved-cards .creditcard-block {
+    display: inline-block;
+    border: 1px solid #999;
+    padding: 10px;
+    margin-left: 10px;
+    min-width: 568px;
+    vertical-align: middle;
+}
+.saved-cards .creditcard-block {
+    min-width: 350px;
+}
+.sp-methods #oneclick_payment_form_mozg_bradesco_shopfacil_oneclick .creditcard-block img,
+.saved-cards .creditcard-block img {
+    margin-bottom: 10px;
+}
+.sp-methods #oneclick_payment_form_mozg_bradesco_shopfacil_oneclick .creditcard-block .columns,
+.saved-cards .creditcard-block .columns {
+    float: left;
+    margin-right: 10px;
+    height: 30px;
+}
+.sp-methods .mozg_bradesco_shopfacil_oneclick .columns .update-expiration-date,
+.saved-cards .creditcard-block .creditcard-block .columns .update-expiration-date {
+    display: inline;
+    float: none;
+    margin: 0;
+}
+.sp-methods .mozg_bradesco_shopfacil_oneclick .columns label,
+.saved-cards .creditcard-block label {
+    display: block;
+}
+.sp-methods .mozg_bradesco_shopfacil_oneclick .columns .columns.three.b label,
+.creditcard-holder-name,
+.saved-cards .creditcard-block .columns.three.b label {
+    width: 175px;
+}
+.sp-methods .mozg_bradesco_shopfacil_oneclick .columns .creditcard-holder-name,
+.saved-cards .creditcard-block .creditcard-holder-name {
+    margin-top: 20px;
+}
+.sp-methods .mozg_bradesco_shopfacil_oneclick .columns .mozg-bradesco-oneclick-installments,
+.saved-cards .creditcard-block .mozg-bradesco-oneclick-installments {
+    margin-top: 10px;
+}
+/* FIX: */
+
+.mozg_bradesco_creditcard_labels img {
+    display: inline;
+}

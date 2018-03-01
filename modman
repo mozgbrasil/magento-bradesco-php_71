@@ -1,0 +1,13 @@
+## Modman Module Mozg
+app/code/local/Mozg/Bradesco/	app/code/local/Mozg/Bradesco/
+app/design/adminhtml/default/default/layout/mozg_bradesco.xml	app/design/adminhtml/default/default/layout/mozg_bradesco.xml
+app/design/adminhtml/default/default/template/mozg_bradesco/	app/design/adminhtml/default/default/template/mozg_bradesco/
+app/design/frontend/base/default/layout/mozg_bradesco.xml	app/design/frontend/base/default/layout/mozg_bradesco.xml
+app/design/frontend/base/default/template/mozg_bradesco/	app/design/frontend/base/default/template/mozg_bradesco/
+app/etc/modules/Mozg_Bradesco.xml	app/etc/modules/Mozg_Bradesco.xml
+app/locale/pt_BR/Mozg_Bradesco.csv	app/locale/pt_BR/Mozg_Bradesco.csv
+js/mozg_bradesco/	js/mozg_bradesco/
+skin/adminhtml/default/default/images/mozg_bradesco/	skin/adminhtml/default/default/images/mozg_bradesco/
+skin/frontend/base/default/css/mozg_bradesco/	skin/frontend/base/default/css/mozg_bradesco/
+skin/frontend/base/default/images/mozg_bradesco/	skin/frontend/base/default/images/mozg_bradesco/
+media/theme/default/modelo_120_80.png			media/theme/default/modelo_120_80.png

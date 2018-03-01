@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config>
+    <menu>
+        <sales>
+            <children>
+                <mozg_bradesco module="mozg_bradesco" translate="title">
+                    <title>Mozg Bradesco Notification Queue</title>
+                    <sort_order>600</sort_order>
+                    <action>adminhtml/mozg_bradesco_event_queue</action>
+                </mozg_bradesco>
+            </children>
+        </sales>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <sales>
+                        <children>
+                            <mozg_bradesco translate="title">
+                                <title>Mozg Bradesco Notification Queue</title>
+                                <sort_order>600</sort_order>
+                            </mozg_bradesco>
+                        </children>
+                    </sales>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

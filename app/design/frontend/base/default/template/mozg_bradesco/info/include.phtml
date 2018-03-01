@@ -1,0 +1,169 @@
+<?php
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+
+<?php
+
+/*
+dump(get_class($this));
+dump($this->getData());
+dump($this->getMethod());
+dump($this->getMethod()->getData());
+dump($this->getInfo());
+dump($this->getInfo()->getData());
+dump(get_class_methods(get_class($this)));
+//dump(get_class_methods(get_class($this->getInfo())));
+*/
+
+?>
+
+<?php echo $this->htmlEscape($this->getMethod()->getTitle()) ?><br/>
+
+<?php if ($_info = $this->getInfo()): ?>
+
+    <?php if ($_info->getMozgPspReference() == ''): ?>
+        <?php echo Mage::helper('mozg_bradesco')->__('Payment has not been processed yet.') ?> <br/>
+    <?php else :?>
+
+        <?php
+
+        //
+
+        $order = $this->getMethod()->getInfoInstance()->getOrder();
+
+        $realOrderId = $order->getRealOrderId();
+        $incrementId = $order->getIncrementId();
+
+        $storeId = $this->getMethod()->getInfoInstance()->getOrder()->getStoreId();
+
+        //
+
+        $pspReference = $this->htmlEscape($_info->getMozgPspReference());
+
+        //
+
+        if (Mage::app()->getStore()->isAdmin()){
+
+        $url = Mage::helper('adminhtml')->getUrl('adminhtml/Bradesco/consulta/', array('pspReference' => $pspReference,'incrementId' => $incrementId) );
+
+        $link = "javascript:openPopupsMozg('$url', 'WinXilinus', 'Link', 'Bradesco', 'cielo');";
+        echo Mage::helper('mozg_bradesco')->__('Bradesco PSP Reference: <a href="%s">%s</a>', $link, 'Clique aqui') . ' <br/>';
+
+        //$link = $url;
+        //echo Mage::helper('mozg_bradesco')->__('Bradesco PSP Reference: <a href="%s" target="_blank">%s</a>', $link, 'Clique aqui') . ' <br/>';
+
+        }
+
+        //
+
+        try {
+
+            $storeId = null;
+            $api = Mage::helper('mozg_bradesco/service')->_initService($storeId);
+            $api = $api->authentication();
+            $api = $api->consulta($incrementId);
+            $getResponseConsulta = $api->getResponseConsulta();
+
+            $responseData = $getResponseConsulta;
+
+            //dump($responseData);
+
+            $status = $responseData['pedidos'][0]['status'];
+            $valor = $responseData['pedidos'][0]['valor'];
+
+            if(!empty($status)){
+
+                $_status = [
+                    '10'=>'Boleto Gerado',
+                    '13'=>'Boleto Gerado',
+                    '14'=>'Boleto Gerado',
+                    '15'=>'Boleto Gerado',
+                    '21'=>'Boleto Pago igual',
+                    '22'=>'Boleto Pago a Menor',
+                    '23'=>'Boleto Pago a Maior',
+                    '81'=>'Transferência Finalizada com Sucesso',
+                ];
+
+                $color = ($status == '21' || $status == '22' || $status == '23' || $status == '81') ? 'green' : 'red';
+
+                $message_status = Mage::helper('mozg_bradesco')->__($_status[$status]);
+
+                $authResult = '<font color="'.$color.'"><b>' . $message_status . '</b></font>';
+
+                echo Mage::helper('mozg_bradesco')->__('Transaction Status: %s', $authResult) . ' <br/>';
+
+            } else {
+
+                echo Mage::helper('mozg_bradesco')->__('Query Error: %s', $responseData['message']) . ' <br/>';
+
+            }
+
+        } catch (Exception $e) {
+            dump(Mage::helper('mozg_bradesco')->__($e->getMessage()));
+        }
+
+        //
+
+        ?>
+
+    <?php endif;?>
+
+
+
+
+    <?php if ($this->getInfo()->getMethod() == 'mozg_bradesco_shopfacil_boleto'): ?>
+        <?php $boleto = unserialize($this->getInfo()->getPoNumber())?>
+        <?php if(!empty($boleto['firstname'])): ?>
+        <?php echo Mage::helper('mozg_bradesco')->__('Social Security Number: %s', $this->htmlEscape($boleto['social_security_number'])) ?><br/>
+        <?php echo Mage::helper('mozg_bradesco')->__('Firstname: %s', $this->htmlEscape($boleto['firstname'])) ?><br/>
+        <?php echo Mage::helper('mozg_bradesco')->__('Lastname: %s', $this->htmlEscape($boleto['lastname'])) ?><br/>
+        <?php endif;?>
+
+        <?php if($this->getInfo()->getOrder() != null): ?>
+        <?php echo Mage::helper('mozg_bradesco')->__('Boleto PDF: <a target="_blank" href="%s">Download</a>', $this->getInfo()->getOrder()->getMozgPaymentUrl()) ?><br/>
+        <?php endif;?>
+
+    <?php endif; ?>
+
+
+
+
+    <?php if ($this->getInfo()->getMethod() == 'mozg_bradesco_shopfacil_eletronictransfer'): ?>
+        <?php $boleto = unserialize($this->getInfo()->getPoNumber())?>
+        <?php if(!empty($boleto['firstname'])): ?>
+        <?php echo Mage::helper('mozg_bradesco')->__('Social Security Number: %s', $this->htmlEscape($boleto['social_security_number'])) ?><br/>
+        <?php echo Mage::helper('mozg_bradesco')->__('Firstname: %s', $this->htmlEscape($boleto['firstname'])) ?><br/>
+        <?php echo Mage::helper('mozg_bradesco')->__('Lastname: %s', $this->htmlEscape($boleto['lastname'])) ?><br/>
+        <?php endif;?>
+
+        <?php if($this->getInfo()->getOrder() != null): ?>
+        <?php echo Mage::helper('mozg_bradesco')->__('EletronicTransfer PDF: <a target="_blank" href="%s">Download</a>', $this->getInfo()->getOrder()->getMozgPaymentUrl()) ?><br/>
+        <?php endif;?>
+    <?php endif; ?>
+
+
+    <?php if (Mage::app()->getStore()->isAdmin()): ?>
+        <?php if($this->htmlEscape($this->getInfo()->getMozgAvsResult()) != ""): ?>
+            <?php echo Mage::helper('mozg_bradesco')->__('Avs result: %s', $this->htmlEscape($this->getInfo()->getMozgAvsResult())) ?><br/>
+        <?php endif; ?>
+        <?php if($this->htmlEscape($this->getInfo()->getMozgCvcResult()) != ""): ?>
+            <?php echo Mage::helper('mozg_bradesco')->__('Cvc result: %s', $this->htmlEscape($this->getInfo()->getMozgCvcResult())) ?><br/>
+        <?php endif; ?>
+        <?php if($this->htmlEscape($this->getInfo()->getMozgTotalFraudScore()) != ""): ?>
+            <?php echo Mage::helper('mozg_bradesco')->__('Total fraud score: %s', $this->htmlEscape($this->getInfo()->getMozgTotalFraudScore())) ?><br/>
+        <?php endif; ?>
+        <?php if($this->htmlEscape($this->getInfo()->getMozgRefusalReasonRaw()) != ""): ?>
+            <?php echo Mage::helper('mozg_bradesco')->__('Raw acquirer response: %s', $this->htmlEscape($this->getInfo()->getMozgRefusalReasonRaw())) ?><br/>
+        <?php endif; ?>
+        <?php if($this->htmlEscape($this->getInfo()->getMozgAuthCode()) != ""): ?>
+            <?php echo Mage::helper('mozg_bradesco')->__('Authorisation code: %s', $this->htmlEscape($this->getInfo()->getMozgAuthCode())) ?><br/>
+        <?php endif; ?>
+        <?php if($this->htmlEscape($this->getInfo()->getMozgAcquirerReference()) != ""): ?>
+            <?php echo Mage::helper('mozg_bradesco')->__('Acquirer reference: %s', $this->htmlEscape($this->getInfo()->getMozgAcquirerReference())) ?><br/>
+        <?php endif; ?>
+    <?php endif; ?>
+
+<?php endif;?>

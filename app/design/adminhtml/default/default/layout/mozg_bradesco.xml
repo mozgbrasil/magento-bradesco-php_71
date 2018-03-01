@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<layout>
+
+    <!-- /index.php/admin/mozg_bradesco_event_queue/ -->
+
+    <adminhtml_mozg_bradesco_event_queue_index>
+        <reference name="content">
+            <block type="mozg_bradesco/adminhtml_mozg_bradesco_event_queue" name="mozg.bradesco.event.queue.grid.index"/>
+        </reference>
+    </adminhtml_mozg_bradesco_event_queue_index>
+
+    <adminhtml_mozg_bradesco_event_queue_grid>
+        <remove name="root"/>
+        <block type="mozg_bradesco/adminhtml_mozg_bradesco_event_queue_grid" name="mozg.bradesco.event.queue.grid" output="toHtml"/>
+    </adminhtml_mozg_bradesco_event_queue_grid>
+
+    <!-- ? -->
+
+</layout>

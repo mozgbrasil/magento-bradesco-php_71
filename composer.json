@@ -1,0 +1,33 @@
+{
+    "name": "mozgbrasil/magento-bradesco-php_71",
+    "description": "Integração ao bradesco",
+    "version": "1.0.0",
+    "type": "magento-module",
+    "keywords": ["cerebrum", "mozg", "magento", "payment", "pagamento", "bradesco"],
+    "homepage": "http://mozg.com.br",
+    "time": "2018-03-01 14:27:59",
+    "license": [
+        "proprietary"
+    ],
+    "authors": [
+        {
+            "name": "Marcio dos Santos Amorim",
+            "email": "suporte@mozg.com.br",
+            "homepage": "http://mozg.com.br",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "suporte@mozg.com.br",
+        "issues": "https://github.com/mozgbrasil/magento-bradesco-php_71/issues",
+        "forum": "http://mozg.com.br/forums/view/1",
+        "wiki": "http://wiki.mozg.com.br",
+        "irc": "irc://irc.freenode.org/mozgbrasil",
+        "source": "https://github.com/mozgbrasil/magento-bradesco-php_71",
+        "docs": "https://github.com/mozgbrasil/magento-bradesco-php_71/wiki",
+        "rss": "http://mozg.com.br/sitemap.xml"
+    },
+    "require" : {
+        "mozgbrasil/magento-payment-php_71": "1.0.0"
+    }
+}
