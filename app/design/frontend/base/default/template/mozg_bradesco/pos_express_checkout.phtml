@@ -1,0 +1,148 @@
+<?php
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php if($this->hasExpressCheckout() || $this->hasCashExpressCheckout() ): ?>
+
+
+
+    <div id="mozg-checkout-wrapper">
+        <form class="form-list" action="<?php echo $this->getUrl("mozg_bradesco/checkoutPos", array('_secure'=>true)); ?>" method="post">
+
+
+            <div class="mozgExpressCheckoutBlockLeft">
+                <input style="width:240px;" type="text" class="input-text" name="mozgPosEmail" id="mozgPosEmail" value="<?php echo $this->getEmailAddressShopper(); ?>" size="60"  placeholder="Email" autocapitalize="off" autocomplete="off"/>
+
+
+                <div id="autocomplete_choices" class="mozgAutocomplete" style="display: none;"></div>
+
+                <div class="input-box">
+                    <div class="v-fix">
+                        <input type="checkbox" class="checkbox" name="mozgPosSaveCard" id="mozgPosSaveCard" checked/>
+                        <label for="mozgPosSaveCard"><?php echo $this->__('Save Card'); ?></label>
+                    </div>
+                </div>
+
+                <div id="mozgEmailLoader" class="autocomplete-indicator" style="display: none;">
+                    <img src="<?php echo $this->getSkinUrl('images/ajax-loader.gif') ?>" alt="<?php echo $this->__('Loading...') ?>" class="v-middle"/>
+                </div>
+
+                <div id="MozgAccountInfo"></div>
+            </div>
+
+            <?php if($this->hasExpressCheckout() && $this->inKioskMode() != "1"): ?>
+
+                <script type="text/javascript">
+                    $('mozgPosEmail').observe('change', getCustomerFromEmail);
+
+                    new Ajax.Autocompleter(
+                        'mozgPosEmail',
+                        'autocomplete_choices',
+                        '<?php echo $this->getUrl('mozg_bradesco/checkoutPos/getCustomerEmail') ?>',
+                        {
+                            paramName:"email",
+                            minChars:2,
+                            indicator:"mozgEmailLoader",
+                            evalJSON:'force',
+                            afterUpdateElement : getSelectionId
+                        }
+                    );
+
+                    function getSelectionId(text, li) {
+                        // strip of customer- to get the id
+                        var id = li.id;
+                        var customerId = id.replace("customer-", "");
+                        getCustomerFromEmailAjaxCall(null, customerId);
+                    }
+
+                    function getCustomerFromEmail(event) {
+                        getCustomerFromEmailAjaxCall(this.value, null);
+                    }
+
+                    function getCustomerFromEmailAjaxCall(email, customerId) {
+
+                        var url = '<?php echo $this->getUrl('mozg_bradesco/checkoutPos/validateCustomerByEmail', array('_secure'=>true));?>';
+
+                        ajaxReq = new Ajax.Request(url, {
+                            parameters: {email: email, customerId: customerId, isAjax: 1, method: 'POST'},
+                            onSuccess: function(transport) {
+
+                                if(transport.status == 200) {
+                                    var json = transport.responseText.evalJSON();
+                                    if(json) {
+
+                                        var text = "<div class=\"MozgShopperDetails\"><h3><?php echo $this->__('Shopper Details') ?>:</h3>";
+                                        text += "<?php echo $this->__('Firstname'); ?>: " + json.customerData.firstname;
+                                        text+= "<br />";
+                                        text += "<?php echo $this->__('Lastname'); ?>: " + json.customerData.lastname;
+                                        text += "</div>";
+
+                                        <?php if($this->showExpressCheckoutRecurringCards()): ?>
+                                            var savedCards = false;
+                                            if(json.recurringCards) {
+                                                text += "<div class=\"MozgSavedCards\"><h3><?php echo $this->__('Saved cards') ?>:</h3>";
+                                                for (var i=0;i<json.recurringCards.length;i++)
+                                                {
+                                                    if(json.recurringCards[i].card_number)
+                                                    {
+                                                        savedCards = true;
+                                                        var variant = json.recurringCards[i].variant;
+                                                        var imageUrl = '<?php echo $this->getSkinUrl("images/mozg_bradesco/elv.png"); ?>';
+                                                        imageUrl = imageUrl.replace("elv", variant);
+                                                        var html = '<div class="creditcard-block">';
+                                                        html += '<a href="<?php echo $this->getUrl('mozg_bradesco/checkoutPos', array('_secure'=>true));?>?recurringDetailReference=' + json.recurringCards[i].recurringDetailReference + '&customerId=' + json.customerData.entity_id + '">';
+                                                        html += '<img src="'+ imageUrl + '" alt="' + variant + '" label="' + variant + '" />';
+                                                        html += '</a>';
+                                                        html += ' **** ' + json.recurringCards[i].card_number;
+                                                        html += '</div>';
+                                                        text += html;
+                                                    }
+                                                }
+                                                if(savedCards == false) {
+                                                    text += "<div><?php echo $this->__('There are no saved cards for this account.');?></div>";
+                                                }
+                                                text += "</div>";
+                                            }
+                                        <?php endif; ?>
+                                        $('MozgAccountInfo').update(text);
+
+                                    } else {
+                                        $('MozgAccountInfo').update("<?php echo $this->__('This is a new Customer'); ?>");
+                                    }
+                                }
+                            },
+                            onFailure: function(){
+                                alert('<?php echo $this->jsQuoteEscape($this->__('Server Error. Please try again.')) ?>');
+                            }
+                        });
+                    }
+                </script>
+
+            <?php endif; ?>
+
+
+            <?php if($this->hasExpressCheckout()): ?>
+                <button id="CheckoutWithPos" style="" type="submit" title="<?php echo $this->__($this->getExpressCheckoutTitle()); ?>" class="button btn-proceed-checkout btn-checkout mozg-checkout-button">
+                    <span><span><?php echo $this->__($this->getExpressCheckoutTitle()); ?></span></span>
+                </button>
+            <?php endif; ?>
+
+        </form>
+
+        <?php if($this->hasCashExpressCheckout()): ?>
+            <form id="MozgFormCheckoutWithCash" action="<?php echo $this->getUrl("mozg_bradesco/checkoutCash", array('_secure'=>true)); ?>" method="post">
+
+                <button id="CheckoutWithCash" style="" type="submit" title="<?php echo $this->__($this->getCashExpressCheckoutTitle()); ?>" class="button btn-proceed-checkout btn-checkout mozg-checkout-button">
+                    <span><span><?php echo $this->__($this->getCashExpressCheckoutTitle()); ?></span></span>
+                </button>
+
+            </form>
+        <?php endif; ?>
+
+    </div>
+
+    <div>-OR-</div>
+
+<?php endif; ?>

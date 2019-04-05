@@ -1,0 +1,104 @@
+<?php
+/**
+ * Mozg Bradesco Module
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Mozg
+ * @package    Mozg_Bradesco
+ * @copyright    Copyright (c) 2011 Mozg (http://www.mozg.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+/**
+ * @category   Payment Gateway
+ * @package    Mozg_Bradesco
+ * @author     Mozg
+ * @property   Mozg B.V
+ * @copyright  Copyright (c) 2014 Mozg BV (http://www.mozg.com)
+ */
+?>
+<?php echo $this->htmlEscape($this->getMethod()->getTitle()) ?><br/>
+<?php if ($_info = $this->getInfo()): ?>
+    <?php if ($_info->getMozgPspReference() == ''): ?>
+        <?php echo Mage::helper('mozg_bradesco')->__('Payment has not been processed yet.') ?> <br/>
+    <?php else : ?>
+        <?php if ($this->getMethod()->getConfigDataDemoMode()): ?>
+            <?php echo Mage::helper('mozg_bradesco')->__('Mozg PSP Reference: <a href="https://ca-test.mozg.com/ca/ca/accounts/showTx.shtml?pspReference=%s&txType=Payment" target="__blank">%s</a>', $this->htmlEscape($_info->getMozgPspReference()), $this->htmlEscape($_info->getMozgPspReference())) ?>
+            <br/>
+        <?php else : ?>
+            <?php echo Mage::helper('mozg_bradesco')->__('Mozg PSP Reference: <a href="https://ca-live.mozg.com/ca/ca/accounts/showTx.shtml?pspReference=%s&txType=Payment" target="__blank">%s</a>', $this->htmlEscape($_info->getMozgPspReference()), $this->htmlEscape($_info->getMozgPspReference())) ?>
+            <br/>
+        <?php endif; ?>
+    <?php endif; ?>
+    <?php $paymentMethod = $_info->getCcType() ?>
+    <?php if (!empty($paymentMethod)): ?>
+        <?php echo $this->__('Payment Method: %s', $this->htmlEscape($paymentMethod)) ?><br/>
+    <?php endif; ?>
+    <?php if ($_info->getAdditionalInformation("hpp_issuer_id") !== null): ?>
+        <?php $bankData = $_info->getAdditionalInformation("hpp_issuer_id"); ?>
+        <?php if (!empty($bankData)) : ?>
+            <?php
+            // for older versions < 2.5.2
+            $id = explode(DS, $bankData);
+            $label = isset($id['1']) ? $id['1'] : "";
+
+            // older versions > 2.5.2
+            if ($label == "") {
+                $label = $_info->getAdditionalInformation('hpp_type_bank_label');
+            }
+
+            ?>
+            <?php echo $this->__('Bank: %s', $this->htmlEscape($label)) ?><br/>
+        <?php endif; ?>
+    <?php endif; ?>
+    <?php if ($this->htmlEscape($this->getInfo()->getMozgTotalFraudScore()) != ""): ?>
+        <?php echo Mage::helper('mozg_bradesco')->__('Total fraud score: %s', $this->htmlEscape($this->getInfo()->getMozgTotalFraudScore())) ?>
+        <br/>
+    <?php endif; ?>
+    <?php if ($_info->getMozgKlarnaNumber() != null && $_info->getMozgKlarnaNumber() != ""): ?>
+        <?php echo Mage::helper('mozg_bradesco')->__('Klarna reservation number: %s', $this->htmlEscape($_info->getMozgKlarnaNumber())) ?>
+        <br/>
+    <?php endif; ?>
+    <?php if ($this->htmlEscape($this->getInfo()->getMozgRefusalReasonRaw()) != ""): ?>
+        <?php echo Mage::helper('mozg_bradesco')->__('Raw acquirer response: %s', $this->htmlEscape($this->getInfo()->getMozgRefusalReasonRaw())) ?>
+        <br/>
+    <?php endif; ?>
+    <?php if ($this->htmlEscape($this->getInfo()->getMozgAuthCode()) != ""): ?>
+        <?php echo Mage::helper('mozg_bradesco')->__('Authorisation code: %s', $this->htmlEscape($this->getInfo()->getMozgAuthCode())) ?>
+        <br/>
+    <?php endif; ?>
+    <?php if ($this->htmlEscape($this->getInfo()->getMozgAcquirerReference()) != ""): ?>
+        <?php echo Mage::helper('mozg_bradesco')->__('Acquirer reference: %s', $this->htmlEscape($this->getInfo()->getMozgAcquirerReference())) ?>
+        <br/>
+    <?php endif; ?>
+
+    <!--    show split paymetn-->
+
+    <?php if ($this->getSplitPayments()): ?>
+        <table>
+            <tr>
+                <th>PspReference</th>
+                <th>Payment Method</th>
+                <th>Amount</th>
+                <th>Refunded</th>
+            </tr>
+            <?php foreach ($this->getSplitPayments() as $payment): ?>
+                <tr>
+                    <td><?php echo $payment->getPspreference() ?></td>
+                    <td><?php echo $payment->getPaymentMethod() ?></td>
+                    <td><?php echo $payment->getAmount() ?></td>
+                    <td><?php echo $payment->getTotalRefunded() ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    <?php endif; ?>
+
+<?php endif; ?>

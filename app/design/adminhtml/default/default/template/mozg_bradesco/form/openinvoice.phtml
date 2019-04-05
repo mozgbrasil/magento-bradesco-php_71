@@ -1,0 +1,21 @@
+<?php
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php //TODO add a form to add data here, currently only on Mozg. ?>
+<?php $_code = $this->getMethodCode(); ?>
+
+    <ul id="payment_form_<?php echo $_code ?>" style="display:none">
+        <li>
+            <?php echo $this->__('You will be redirected to Mozg website when you place an order.') ?> 
+        </li>
+    </ul>
+
+<div>
+    <span id="ipayment-elv-please-wait" style="display:none;" class="opc-please-wait">
+        <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" class="v-middle" alt=""/> &nbsp; <?php echo $this->__('Submitting payment information...') ?> &nbsp;
+    </span>
+</div>
+

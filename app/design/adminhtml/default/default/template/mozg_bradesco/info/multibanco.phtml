@@ -1,0 +1,28 @@
+<p><?php echo $this->escapeHtml($this->getMethod()->getTitle()) ?></p>
+<?php if ($_info = $this->getInfo()): ?>
+    <?php if ($_info->getMozgPspReference() == ''): ?>
+        <?php echo Mage::helper('mozg_bradesco')->__('Payment has not been processed yet.') ?> <br/>
+    <?php else :?>
+        <?php if($this->getMethod()->getConfigDataDemoMode()): ?>
+            <?php echo Mage::helper('mozg_bradesco')->__('Mozg PSP Reference: <a href="https://ca-test.mozg.com/ca/ca/accounts/showTx.shtml?pspReference=%s&txType=Payment" target="__blank">%s</a>', $this->htmlEscape($_info->getMozgPspReference()), $this->htmlEscape($_info->getMozgPspReference())) ?> <br/>
+        <?php else : ?>
+            <?php echo Mage::helper('mozg_bradesco')->__('Mozg PSP Reference: <a href="https://ca-live.mozg.com/ca/ca/accounts/showTx.shtml?pspReference=%s&txType=Payment" target="__blank">%s</a>', $this->htmlEscape($_info->getMozgPspReference()), $this->htmlEscape($_info->getMozgPspReference())) ?> <br/>
+        <?php endif; ?>
+    <?php endif;?>
+    <?php if($this->htmlEscape($this->getInfo()->getMozgRefusalReasonRaw()) != ""): ?>
+        <?php echo Mage::helper('mozg_bradesco')->__('Raw acquirer response: %s', $this->htmlEscape($this->getInfo()->getMozgRefusalReasonRaw())) ?><br/>
+    <?php endif; ?>
+    <?php if($this->htmlEscape($this->getInfo()->getMozgAuthCode()) != ""): ?>
+        <?php echo Mage::helper('mozg_bradesco')->__('Authorisation code: %s', $this->htmlEscape($this->getInfo()->getMozgAuthCode())) ?><br/>
+    <?php endif; ?>
+    <?php if($this->htmlEscape($this->getInfo()->getMozgAcquirerReference()) != ""): ?>
+        <?php echo Mage::helper('mozg_bradesco')->__('Acquirer reference: %s', $this->htmlEscape($this->getInfo()->getMozgAcquirerReference())) ?><br/>
+    <?php endif; ?>
+<?php endif;?>
+<?php $multibanco = $this->getInfo()->getAdditionalInformation(); ?>
+<?php if (isset($multibanco['comprafacil.entity'])): ?>
+    <?php echo $this->__('Entity Number') ?>: <?php echo $multibanco['comprafacil.entity'] ?><br/>
+    <?php echo $this->__('Reference') ?>: <?php echo $multibanco['comprafacil.reference'] ?><br/>
+    <?php echo $this->__('Payable Amount Value') ?>: <?php echo Mage::helper('core')->currency($multibanco['comprafacil.amount'], true, false) ?><br/>
+    <?php echo $this->__('Due Date / Expiry Date') ?>: <?php echo $multibanco['comprafacil.deadline_date'] ?><br/>
+<?php endif; ?>

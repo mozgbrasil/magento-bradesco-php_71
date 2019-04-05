@@ -1,0 +1,13 @@
+<?php
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php echo $this->htmlEscape($this->getMethod()->getTitle()) ?><br/>
+<?php if ($_info = $this->getInfo()): ?>
+    <?php $paymentMethod = $_info->getCcType() ?>
+    <?php if (!empty($paymentMethod)): ?>
+        <?php echo $this->__('Payment Method: %s', $this->htmlEscape($paymentMethod)) ?><br/>
+    <?php endif; ?>
+<?php endif; ?>

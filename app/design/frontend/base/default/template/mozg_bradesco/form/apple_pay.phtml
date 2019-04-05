@@ -1,0 +1,33 @@
+<?php
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+$_code = $this->getMethodCode();
+/** @var $this Mozg_Bradesco_Block_Form_Sepa */
+?>
+
+
+<fieldset class="form-list">
+
+    <script type="text/javascript">
+        // check if apple pay is available for shopper
+        if(window.ApplePaySession) {
+//            var promise = ApplePaySession.canMakePaymentsWithActiveCard("<?php //echo $this->getMerchantIdentifier(); ?>//");
+//            promise.then(function (canMakePayments) {
+//                if (canMakePayments) {
+                    $('MozgApplePayError').hide();
+                    $('MozgAllowApplePay').setValue("1");
+//                }
+//            });
+        }
+    </script>
+
+    <ul id="payment_form_<?php echo $_code ?>" style="display:none">
+        <li id="MozgApplePayError">
+            <?php echo $this->__('Your browser does not support ApplePay or you don\'t have any active cards in your wallet.') ?>
+            <input type="hidden" id="MozgAllowApplePay" name="payment[allow_apple_pay]" value="0"/>
+        </li>
+    </ul>
+</fieldset>
+

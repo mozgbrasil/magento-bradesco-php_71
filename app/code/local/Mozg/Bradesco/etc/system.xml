@@ -1,0 +1,2381 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config>
+    <sections>
+        <payment>
+            <groups>
+                <!-- @default -->
+                <mozg_bradesco_abstract translate="label" module="mozg_bradesco">
+                    <label>Bradesco Default Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5000</sort_order>
+                    <frontend_class>complex</frontend_class>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_bradesco/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path/>
+                    <fields>
+                        <mozg_bradesco_abstract_license type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Licenciamento</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>10</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <license translate="label">
+                                    <label>Licença para uso comercial</label>
+                                    <comment></comment>
+                                    <frontend_type>textarea</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/license</config_path>
+                                    <sort_order>8</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </license>
+                                <license_output translate="label">
+                                    <label></label>
+                                    <comment></comment>
+                                    <license_config_path>payment/mozg_bradesco_abstract/license</license_config_path>
+                                    <method_id>mozg_bradesco</method_id>
+                                    <frontend_type>text</frontend_type>
+                                    <frontend_model>mozg_base/adminhtml_system_config_form_field_license</frontend_model>
+                                    <sort_order>9</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </license_output>
+                            </fields>
+                        </mozg_bradesco_abstract_license>
+                        <mozg_bradesco_required_settings type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Required Settings</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>20</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <email translate="label comment tooltip">
+                                    <label>e-mail</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-email" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/email</config_path>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </email>
+                                <demoMode translate="label">
+                                    <label>Test/Production Mode</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-modo-teste-ou-produção" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/demoMode</config_path>
+                                    <source_model>mozg_bradesco/source_DemoModes</source_model>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </demoMode>
+                                <heading_sandbox translate="label">
+                                    <label>Sandbox</label>
+                                    <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                                    <sort_order>21</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                </heading_sandbox>
+                                <MerchantId_test translate="label comment tooltip">
+                                    <label>Merchant ID</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-merchant-id-para-o-ambiente-de-teste" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/MerchantId_test</config_path>
+                                    <sort_order>30</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </MerchantId_test>
+                                <MerchantKey_test translate="label comment tooltip">
+                                    <label>Merchant Key</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-merchant-key-ambiente-de-teste" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>obscure</frontend_type>
+                                    <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+                                    <config_path>payment/mozg_bradesco_abstract/MerchantKey_test</config_path>
+                                    <sort_order>40</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </MerchantKey_test>
+                                <heading_producao translate="label">
+                                    <label>Produção</label>
+                                    <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                                    <sort_order>41</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                </heading_producao>
+                                <MerchantId_live translate="label comment tooltip">
+                                    <label>Merchant ID</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-merchant-id-para-o-ambiente-de-produção" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/MerchantId_live</config_path>
+                                    <sort_order>50</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </MerchantId_live>
+                                <MerchantKey_live translate="label comment tooltip">
+                                    <label>Merchant Key</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-merchant-key-ambiente-de-produção" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>obscure</frontend_type>
+                                    <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+                                    <config_path>payment/mozg_bradesco_abstract/MerchantKey_live</config_path>
+                                    <sort_order>60</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </MerchantKey_live>
+                            </fields>
+                        </mozg_bradesco_required_settings>
+                        <mozg_bradesco_order_process type="group" translate="label comment tooltip">
+                            <label>Advanced: Magento Order Processing</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>30</sort_order>
+                            <frontend_model>mozg_bradesco/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <create_order_of_transaction_refused translate="label">
+                                    <label>Criar pedido quando houver transação recusada</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/create_order_of_transaction_refused</config_path>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>3</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </create_order_of_transaction_refused>
+                                <capture_mode translate="label">
+                                    <label>Capture Delay</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-tempo-de-captura" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_captureModes</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/capture_mode</config_path>
+                                    <sort_order>4</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </capture_mode>
+                                <order_status translate="label">
+                                    <label>Order status: order creation</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-ordem-de-criação" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/order_status</config_path>
+                                    <source_model>adminhtml/system_config_source_order_status_new</source_model>
+                                    <sort_order>5</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </order_status>
+                                <payment_pre_authorized>
+                                    <label>Order status: payment authorisation</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-autorização-de-pagamento" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/payment_pre_authorized</config_path>
+                                    <source_model>adminhtml/system_config_source_order_status_newprocessing</source_model>
+                                    <sort_order>6</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </payment_pre_authorized>
+                                <payment_authorized translate="label">
+                                    <label>Order status: payment confirmed</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-pagamento-confirmado" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/payment_authorized</config_path>
+                                    <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                                    <sort_order>7</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </payment_authorized>
+                                <payment_cancelled translate="label">
+                                    <label>Order status: order cancellation</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-cancelamento-de-pedido" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/payment_cancelled</config_path>
+                                    <source_model>mozg_bradesco/source_cancelModes</source_model>
+                                    <sort_order>8</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </payment_cancelled>
+                                <debug translate="label">
+                                    <label>Enable debug logging</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ativar-log-de-depuração" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/debug</config_path>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>9</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </debug>
+                                <!--<paypal_capture_mode>
+                                    <label>Use manual capture for PayPal</label>
+                                    <tooltip>Should be on 'No' by default. If you have requested with Mozg Support for your PayPal integration to be on manual capture, set this to 'Yes'.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_PayPalCaptureModes</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/paypal_capture_mode</config_path>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </paypal_capture_mode>
+                                <auto_capture_openinvoice>
+                                    <label>Use auto-capture for OpenInvoice payments</label>
+                                    <tooltip>Applicable for Klarna and AfterPay only. By default OpenInvoice is set to manual capture. If you want auto capture you need to contact magento@mozg.com. After approval has been given, then you can set this option to 'Yes'.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/auto_capture_openinvoice</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </auto_capture_openinvoice>-->
+                                <payment_authorized_virtual>
+                                    <label>Order status: payment capture (virtual products)</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-captura-de-pagamento-produtos-virtuais" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/payment_authorized_virtual</config_path>
+                                    <source_model>mozg_bradesco/source_status_complete</source_model>
+                                    <sort_order>50</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </payment_authorized_virtual>
+                                <refund_authorized translate="label">
+                                    <label>Order status: Mozg Refunded</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-reembolsado" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/refund_authorized</config_path>
+                                    <source_model>mozg_bradesco/source_status_refund</source_model>
+                                    <sort_order>60</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </refund_authorized>
+                                <refund_partial_authorized translate="label">
+                                    <label>Order status: Mozg partial Refunded</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-reembolsado-parcial" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/refund_partial_authorized</config_path>
+                                    <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                                    <sort_order>70</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </refund_partial_authorized>
+                                <pending_status>
+                                    <label>Order status: pending orders</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-pedidos-pendentes" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/pending_status</config_path>
+                                    <source_model>mozg_bradesco/source_status_pending</source_model>
+                                    <sort_order>80</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </pending_status>
+                                <!--<send_email_bank_sepa_on_pending>
+                                    <label>Send order confirmation email for Bank Transfer/SEPA</label>
+                                    <tooltip>Send a confirmation mail after Bank Tranfer/SEPA is placed (not yet paid). If you want these notifications to be received, Go to Mozg Customer Area => Server Communication and add BankTransfer Pending Notification and Direct-Debit Pending Notification.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/send_email_bank_sepa_on_pending</config_path>
+                                    <sort_order>60</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </send_email_bank_sepa_on_pending>-->
+                                <create_pending_invoice translate="label">
+                                    <label>Create a pending invoice (only for manual capture)</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-criar-uma-fatura-pendente-apenas-para-captura-manual" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>100</sort_order>
+                                    <config_path>payment/mozg_bradesco_abstract/create_pending_invoice</config_path>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </create_pending_invoice>
+                                <capture_on_shipment>
+                                    <label>Order status: Capture on shipment</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-capturar-no-embarque" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/capture_on_shipment</config_path>
+                                    <sort_order>110</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </capture_on_shipment>
+                                <uncancelorder translate="label">
+                                    <label>Enable Uncancel Order</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ativar-descancelar-pedido" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/uncancelorder</config_path>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>120</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>0</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </uncancelorder>
+                                <unholdorder translate="label">
+                                    <label>Enable Unhold Order</label>
+                                    <tooltip>If an order is holded for some reason but it received a notification that the payment is processed this will automatically unhold the order</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/unholdorder</config_path>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>95</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>0</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </unholdorder>
+                                <autorefundoncancel translate="label">
+                                    <label>Automatic cancel\refund when a order is canceled</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-cancelamentoreembolso-automático-quando-o-pedido-é-cancelado" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/autorefundoncancel</config_path>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>130</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>0</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </autorefundoncancel>
+                                <send_invoice_update_mail translate="label">
+                                    <label>Invoice email</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-e-mail-da-fatura" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/send_invoice_update_mail</config_path>
+                                    <sort_order>140</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </send_invoice_update_mail>
+                                <send_update_mail translate="label">
+                                    <label>Customers receive order status update email (deprecated).</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-os-clientes-recebem-e-mail-de-atualização-de-status-de-pedido" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/send_update_mail</config_path>
+                                    <sort_order>150</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </send_update_mail>
+
+                                <use_zero_auth translate="label">
+                                    <label>Do not perform a full authorisation, only a zero auth to check if the card is valid</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/use_zero_auth</config_path>
+                                    <sort_order>1210</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </use_zero_auth>
+                                <base_zero_auth_on_date translate="label tooltip">
+                                    <label>Base zero authentication vs. full authentication on the date field</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_zeroauthdatefield</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/base_zero_auth_on_date</config_path>
+                                    <tooltip>Full authentication is only valid for 7 days, after that it expires. The value here should be the date column name in 'sales_flat_order' on which the order will be shipped and thus captured.</tooltip>
+                                    <sort_order>1220</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                    <depends>
+                                        <use_zero_auth>1</use_zero_auth>
+                                    </depends>
+                                </base_zero_auth_on_date>
+                            </fields>
+                        </mozg_bradesco_order_process>
+                        <mozg_bradesco_order_notifications type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Advanced: Mozg Bradesco Notifications</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>40</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <ignore_refund_notification>
+                                    <label>Ignore refund notification</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ignorar-notificação-de-reembolso" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>230</sort_order>
+                                    <config_path>payment/mozg_bradesco_abstract/ignore_refund_notification</config_path>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </ignore_refund_notification>
+                                <multiple_merchants translate="label">
+                                    <label>Allow multiple merchants</label>
+                                    <tooltip><![CDATA[Allow notifications sent from other Mozg merchant accounts. Keep in mind that the Notification user name and password should be the same for all the merchant accounts]]></tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>250</sort_order>
+                                    <config_path>payment/mozg_bradesco_abstract/multiple_merchants</config_path>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>0</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </multiple_merchants>
+                                <event_queue_limit>
+                                    <label>Process Notification Queue Limit</label>
+                                    <tooltip>What is the maximum amount of payment notifications to process during a cron run?</tooltip>
+                                    <frontend_type>text</frontend_type>
+                                    <validate>validate-not-negative-number</validate>
+                                    <sort_order>260</sort_order>
+                                    <config_path>payment/mozg_bradesco_abstract/event_queue_limit</config_path>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>0</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </event_queue_limit>
+                            </fields>
+                        </mozg_bradesco_order_notifications>
+                        <!--<mozg_bradesco_billing_agreements type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Advanced: Billing Agreements</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>50</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <comment><![CDATA[<p><strong>ONECLICK</strong>: The shopper opts in to storing their card details for future use. The shopper is present for the subsequent transaction, for cards the security code (CVC/CVV) is required.</p><p><strong>RECURRING*</strong>: Payment details are stored for future use. For cards, the security code (CVC/CVV) is not required for subsequent payments.</p><p><strong>ONECLICK, RECURRING*</strong>: Payment details are stored for future use. This allows the use of the stored payment details regardless of whether the shopper is on your site or not.</p>]]></comment>
+                            <fields>
+                                <recurringtypes translate="label">
+                                    <label>Agreement Type</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_recurringType</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/recurringtypes</config_path>
+                                    <sort_order>79</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <tooltip>When enabled, users can save their Credit Cards and their SEPA authorizations. ONECLICK will require the input of the CVC for subsequent payments, while RECURRING does not.</tooltip>
+                                </recurringtypes>
+                            </fields>
+                        </mozg_bradesco_billing_agreements>-->
+                        <mozg_bradesco_checkout_experience type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Advanced: Checkout Experience</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>60</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <payment_cancelled_redirect>
+                                    <label>Redirect destination after cancellation</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-redirecionar-o-destino-após-o-cancelamento" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_cancelRedirect</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/payment_cancelled_redirect</config_path>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </payment_cancelled_redirect>
+                                <title_renderer>
+                                    <label>Payment method render method</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-método-de-pagamento-método-de-renderização" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_rendermode</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/title_renderer</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </title_renderer>
+                                <shopperlocale translate="label">
+                                    <label>Language locale (optional)</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-idioma-local-opcional" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/shopperlocale</config_path>
+                                    <sort_order>180</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </shopperlocale>
+                                <countryCode translate="label">
+                                    <label>ISO Country Code (optional)</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-código-do-país-iso-opcional" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_abstract/countryCode</config_path>
+                                    <sort_order>190</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </countryCode>
+                            </fields>
+                        </mozg_bradesco_checkout_experience>
+                        <mozg_bradesco_manual_review type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Advanced: Manual Review</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>70</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <comment><![CDATA[<p>Mozg's Risk analysis tool allows merchants to configure when a transaction should be rejected or accepted depending on certain characteristics of the payment. This process has always had two automatic outcomes, either accept or reject the payment. Now, Mozg's risk system can tell merchants when a transaction seems to be risky but without rejecting it, and requires to be manually reviewed in order to decide if it should be accepted or rejected.</p>]]></comment>
+                            <fields>
+                                <fraud_manual_review_status>
+                                    <label>Manual Review Status</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-da-revisão-manual" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_status_pending</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/fraud_manual_review_status</config_path>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </fraud_manual_review_status>
+                                <fraud_manual_review_accept_status>
+                                    <label>Manual Review Accepted Status</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-revisão-manual-status-aceito" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/fraud_manual_review_accept_status</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </fraud_manual_review_accept_status>
+                            </fields>
+                        </mozg_bradesco_manual_review>
+                        <mozg_bradesco_split_payments type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Advanced: Split Payments</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>80</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <comment><![CDATA[<p>It is possible to do split payments with GiftCards please configure here what refund strategie you want to use</p>]]></comment>
+                            <fields>
+                                <split_payments_refund_strategy>
+                                    <label>Refund Strategy</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-estratégia-de-reembolso" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_SplitPaymentsRefundStrategies</source_model>
+                                    <config_path>payment/mozg_bradesco_abstract/split_payments_refund_strategy</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </split_payments_refund_strategy>
+                            </fields>
+                        </mozg_bradesco_split_payments>
+                    </fields>
+                </mozg_bradesco_abstract>
+                <!-- @CC only -->
+                <!--<mozg_bradesco_shopfacil_cc translate="label" module="mozg_bradesco">
+                    <label>Bradesco Credit Card</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1010</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_base/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_bradesco_shopfacil_cc/active</activity_path>
+                    <fields>
+                        <mozg_bradesco_shopfacil_cc_group_1 type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Configurações básica nativa</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>100</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <active translate="label">
+                                    <config_path>payment/mozg_bradesco_shopfacil_cc/active</config_path>
+                                    <label>Enabled</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ativar" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </active>
+                                <sort_order translate="label">
+                                    <config_path>payment/mozg_bradesco_shopfacil_cc/sort_order</config_path>
+                                    <label>Sort Order</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ordem-de-exibição" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </sort_order>
+                                <title translate="label">
+                                    <config_path>payment/mozg_bradesco_shopfacil_cc/title</config_path>
+                                    <label>Title</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-título" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <sort_order>30</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </title>
+                                <allowspecific translate="label">
+                                    <config_path>payment/mozg_bradesco_shopfacil_cc/allowspecific</config_path>
+                                    <label>Payment from applicable countries</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-pagamentos-aplicáveis-aos-países" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>allowspecific</frontend_type>
+                                    <sort_order>40</sort_order>
+                                    <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </allowspecific>
+                                <specificcountry translate="label">
+                                    <config_path>payment/mozg_bradesco_shopfacil_cc/specificcountry</config_path>
+                                    <label>Payment from specific countries</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-pagamentos-específicos-aos-países" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>multiselect</frontend_type>
+                                    <sort_order>50</sort_order>
+                                    <source_model>adminhtml/system_config_source_country</source_model>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <depends><allowspecific>1</allowspecific></depends>
+                                </specificcountry>
+                            </fields>
+                        </mozg_bradesco_shopfacil_cc_group_1>
+                        <mozg_bradesco_shopfacil_cc_group_2 type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Configurações para integração</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>200</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <provider>
+                                    <label>Provider</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_ProviderCc</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_cc/provider</config_path>
+                                    <sort_order>150</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </provider>
+                                <cctypes translate="label">
+                                    <label>Credit Card Types</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-tipos-de-cartão-de-crédito" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>multiselect</frontend_type>
+                                    <source_model>mozg_bradesco/source_ccType</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_cc/cctypes</config_path>
+                                    <sort_order>160</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </cctypes>
+                                <mozg_bradesco_shopfacil_cc_advanced type="group" translate="label" module="mozg_bradesco">
+                                    <label>Advanced Settings</label>
+                                    <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                                    <frontend_type>text</frontend_type>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <sort_order>180</sort_order>
+                                    <fields>
+                                        <authenticate>
+                                            <label>Authenticate</label>
+                                            <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-autenticar" target="_blank">__?__</a>]]></comment>
+                                            <frontend_type>select</frontend_type>
+                                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                                            <config_path>payment/mozg_bradesco_shopfacil_cc/authenticate</config_path>
+                                            <sort_order>104</sort_order>
+                                            <show_in_default>1</show_in_default>
+                                            <show_in_website>1</show_in_website>
+                                            <show_in_store>1</show_in_store>
+                                        </authenticate>
+                                       <fraudanalysis translate="label">
+                                            <label>Analise de Fraude</label>
+                                            <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-analise-de-fraude" target="_blank">__?__</a>]]></comment>
+                                            <frontend_type>select</frontend_type>
+                                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                                            <config_path>payment/mozg_bradesco_shopfacil_cc/fraudanalysis</config_path>
+                                            <sort_order>105</sort_order>
+                                            <show_in_default>1</show_in_default>
+                                            <show_in_website>1</show_in_website>
+                                            <show_in_store>1</show_in_store>
+                                        </fraudanalysis>
+                                        <enable_moto>
+                                            <label>Enable MOTO 'Mail Order / Telephone Order' for backend orders</label>
+                                            <frontend_type>select</frontend_type>
+                                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                                            <config_path>payment/mozg_bradesco_shopfacil_cc/enable_moto</config_path>
+                                            <sort_order>105</sort_order>
+                                            <show_in_default>1</show_in_default>
+                                            <show_in_website>1</show_in_website>
+                                            <show_in_store>1</show_in_store>
+                                        </enable_moto>
+                                        <enable_installments translate="label">
+                                            <label>Enable Installments</label>
+                                            <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ativar-parcelamentos" target="_blank">__?__</a>]]></comment>
+                                            <frontend_type>select</frontend_type>
+                                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                                            <config_path>payment/mozg_bradesco_shopfacil_cc/enable_installments</config_path>
+                                            <sort_order>110</sort_order>
+                                            <show_in_default>1</show_in_default>
+                                            <show_in_website>1</show_in_website>
+                                            <show_in_store>1</show_in_store>
+                                        </enable_installments>
+                                        <installments translate="label">
+                                            <label>Installments default</label>
+                                            <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-parcelas-padrão" target="_blank">__?__</a>]]></comment>
+                                            <frontend_model>mozg_bradesco/adminhtml_form_field_installments</frontend_model>
+                                            <backend_model>mozg_bradesco/system_config_backend_installments</backend_model>
+                                            <config_path>payment/mozg_bradesco_shopfacil_cc/installments</config_path>
+                                            <sort_order>120</sort_order>
+                                            <show_in_default>1</show_in_default>
+                                            <show_in_website>1</show_in_website>
+                                            <show_in_store>1</show_in_store>
+                                            <comments>This is the fallback if specific credit card type has no installments configured</comments>
+                                        </installments>
+                                        <installments_AE translate="label">
+                                            <label>Installments For American Express</label>
+                                            <frontend_model>mozg_bradesco/adminhtml_form_field_installments</frontend_model>
+                                            <backend_model>mozg_bradesco/system_config_backend_installments</backend_model>
+                                            <config_path>payment/mozg_bradesco_shopfacil_cc/installments_AE</config_path>
+                                            <sort_order>130</sort_order>
+                                            <show_in_default>1</show_in_default>
+                                            <show_in_website>1</show_in_website>
+                                            <show_in_store>1</show_in_store>
+                                        </installments_AE>
+                                        <installments_VI translate="label">
+                                            <label>Installments For Visa</label>
+                                            <frontend_model>mozg_bradesco/adminhtml_form_field_installments</frontend_model>
+                                            <backend_model>mozg_bradesco/system_config_backend_installments</backend_model>
+                                            <config_path>payment/mozg_bradesco_shopfacil_cc/installments_VI</config_path>
+                                            <sort_order>140</sort_order>
+                                            <show_in_default>1</show_in_default>
+                                            <show_in_website>1</show_in_website>
+                                            <show_in_store>1</show_in_store>
+                                        </installments_VI>
+                                        <installments_MC translate="label">
+                                            <label>Installments For Master Card</label>
+                                            <frontend_model>mozg_bradesco/adminhtml_form_field_installments</frontend_model>
+                                            <backend_model>mozg_bradesco/system_config_backend_installments</backend_model>
+                                            <config_path>payment/mozg_bradesco_shopfacil_cc/installments_MC</config_path>
+                                            <sort_order>150</sort_order>
+                                            <show_in_default>1</show_in_default>
+                                            <show_in_website>1</show_in_website>
+                                            <show_in_store>1</show_in_store>
+                                        </installments_MC>
+                                        <installments_DI translate="label">
+                                            <label>Installments For Discover</label>
+                                            <frontend_model>mozg_bradesco/adminhtml_form_field_installments</frontend_model>
+                                            <backend_model>mozg_bradesco/system_config_backend_installments</backend_model>
+                                            <config_path>payment/mozg_bradesco_shopfacil_cc/installments_DI</config_path>
+                                            <sort_order>160</sort_order>
+                                            <show_in_default>1</show_in_default>
+                                            <show_in_website>1</show_in_website>
+                                            <show_in_store>1</show_in_store>
+                                        </installments_DI>
+                                        <installments_DC translate="label">
+                                            <label>Installments For Diners Club</label>
+                                            <frontend_model>mozg_bradesco/adminhtml_form_field_installments</frontend_model>
+                                            <backend_model>mozg_bradesco/system_config_backend_installments</backend_model>
+                                            <config_path>payment/mozg_bradesco_shopfacil_cc/installments_DC</config_path>
+                                            <sort_order>170</sort_order>
+                                            <show_in_default>1</show_in_default>
+                                            <show_in_website>1</show_in_website>
+                                            <show_in_store>1</show_in_store>
+                                        </installments_DC>
+                                        <installments_JCB translate="label">
+                                            <label>Installments For JCB</label>
+                                            <frontend_model>mozg_bradesco/adminhtml_form_field_installments</frontend_model>
+                                            <backend_model>mozg_bradesco/system_config_backend_installments</backend_model>
+                                            <config_path>payment/mozg_bradesco_shopfacil_cc/installments_JCB</config_path>
+                                            <sort_order>190</sort_order>
+                                            <show_in_default>1</show_in_default>
+                                            <show_in_website>1</show_in_website>
+                                            <show_in_store>1</show_in_store>
+                                        </installments_JCB>
+                                        <installments_ELO translate="label">
+                                            <label>Installments For Elo</label>
+                                            <frontend_model>mozg_bradesco/adminhtml_form_field_installments</frontend_model>
+                                            <backend_model>mozg_bradesco/system_config_backend_installments</backend_model>
+                                            <config_path>payment/mozg_bradesco_shopfacil_cc/installments_ELO</config_path>
+                                            <sort_order>200</sort_order>
+                                            <show_in_default>1</show_in_default>
+                                            <show_in_website>1</show_in_website>
+                                            <show_in_store>1</show_in_store>
+                                        </installments_ELO>
+                                        <installments_hipercard translate="label">
+                                            <label>Installments For Hipercard</label>
+                                            <frontend_model>mozg_bradesco/adminhtml_form_field_installments</frontend_model>
+                                            <backend_model>mozg_bradesco/system_config_backend_installments</backend_model>
+                                            <config_path>payment/mozg_bradesco_shopfacil_cc/installments_hipercard</config_path>
+                                            <sort_order>210</sort_order>
+                                            <show_in_default>1</show_in_default>
+                                            <show_in_website>1</show_in_website>
+                                            <show_in_store>1</show_in_store>
+                                        </installments_hipercard>
+                                    </fields>
+                                </mozg_bradesco_shopfacil_cc_advanced>
+                            </fields>
+                        </mozg_bradesco_shopfacil_cc_group_2>
+                        <mozg_bradesco_shopfacil_cc_group_3 type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Advanced Settings</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>300</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <visible_type>
+                                    <label>Visible in</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-visível-em" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_VisibleType</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_cc/visible_type</config_path>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </visible_type>
+                               <disable_zero_total>
+                                    <label>Disable at zero grand total</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-desativar-em-total-geral-zero" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_cc/disable_zero_total</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </disable_zero_total>
+                            </fields>
+                        </mozg_bradesco_shopfacil_cc_group_3>
+                    </fields>
+                </mozg_bradesco_shopfacil_cc>-->
+                <!-- @oneclick only -->
+                <!--<mozg_bradesco_shopfacil_oneclick>
+                    <label>Bradesco OneClick - Requires Bradesco Credit Card</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1020</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_base/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_bradesco_shopfacil_oneclick/active</activity_path>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>OneClick payments only work if you have Mozg Credit Card enabled</tooltip>
+                        </active>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+            			    <tooltip>Set the sequence number of this payment method in the checkout. Payment methods with a higher sort order number will be displayed lower in the list.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <recurring_payment_type translate="label">
+                            <label>Agreement Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mozg_bradesco/source_recurringPaymentType</source_model>
+                            <config_path>payment/mozg_bradesco_shopfacil_oneclick/recurring_payment_type</config_path>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>With ONECLICK the shopper needs to fill in their security code for credit cards. For RECURRING, this is not needed. If you want to use RECURRING make sure you have Agreement Type set to RECURRING or ONECLICK,RECURRING. In the Backend always recurring is used because OneClick could trigger 3D secure.</tooltip>
+                        </recurring_payment_type>
+                    </fields>
+                </mozg_bradesco_shopfacil_oneclick>-->
+                <!-- @DC only -->
+                <!--<mozg_bradesco_shopfacil_dc translate="label" module="mozg_bradesco">
+                    <label>Bradesco Debit Card</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1030</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_base/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_bradesco_shopfacil_dc/active</activity_path>
+                    <fields>
+                        <mozg_bradesco_shopfacil_dc_group_1 type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Configurações básica nativa</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>100</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <active translate="label">
+                                    <label>Enabled</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ativar-1" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_dc/active</config_path>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </active>
+                                <sort_order translate="label">
+                                    <label>Sort Order</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ordem-de-exibição-1" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_dc/sort_order</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </sort_order>
+                                <title translate="label">
+                                    <label>Title</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-título-1" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_dc/title</config_path>
+                                    <sort_order>30</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </title>
+                                <allowspecific translate="label">
+                                    <label>Payment from applicable countries</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-pagamentos-aplicáveis-aos-países-1" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>allowspecific</frontend_type>
+                                    <sort_order>40</sort_order>
+                                    <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_dc/allowspecific</config_path>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </allowspecific>
+                                <specificcountry translate="label">
+                                    <label>Payment from specific countries</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-pagamentos-específicos-aos-países-1" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>multiselect</frontend_type>
+                                    <sort_order>50</sort_order>
+                                    <source_model>adminhtml/system_config_source_country</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_dc/specificcountry</config_path>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <depends><allowspecific>1</allowspecific></depends>
+                                </specificcountry>
+                            </fields>
+                        </mozg_bradesco_shopfacil_dc_group_1>
+                        <mozg_bradesco_shopfacil_dc_group_2 type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Configurações para integração</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>200</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <provider>
+                                    <label>Provider</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_ProviderDc</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_dc/provider</config_path>
+                                    <sort_order>150</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </provider>
+                                <dctypes translate="label">
+                                    <label>Debit Card Types</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-tipos-de-cartão-de-débito" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>multiselect</frontend_type>
+                                    <source_model>mozg_bradesco/source_dcType</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_dc/dctypes</config_path>
+                                    <sort_order>160</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </dctypes>
+                            </fields>
+                        </mozg_bradesco_shopfacil_dc_group_2>
+                        <mozg_bradesco_shopfacil_dc_group_3 type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Advanced Settings</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>300</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <visible_type>
+                                    <label>Visible in</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-visível-em-1" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_VisibleType</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_dc/visible_type</config_path>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </visible_type>
+                                <disable_zero_total>
+                                    <label>Disable at zero grand total</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-desativar-em-total-geral-zero-1" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_dc/disable_zero_total</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </disable_zero_total>
+                            </fields>
+                        </mozg_bradesco_shopfacil_dc_group_3>
+                    </fields>
+                </mozg_bradesco_shopfacil_dc>-->
+                <!-- @boleto only -->
+                <mozg_bradesco_shopfacil_boleto translate="label" module="mozg_bradesco">
+                    <label>Bradesco Boleto</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5050</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_base/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_bradesco_shopfacil_boleto/active</activity_path>
+                    <fields>
+                        <mozg_bradesco_shopfacil_boleto_group_1 type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Configurações básica nativa</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>100</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <active translate="label">
+                                    <label>Enabled</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ativar-2" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/active</config_path>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </active>
+                                <sort_order translate="label">
+                                    <label>Sort Order</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ordem-de-exibição-2" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/sort_order</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </sort_order>
+                                <title translate="label">
+                                    <label>Title</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-título-2" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/title</config_path>
+                                    <sort_order>30</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </title>
+                                <allowspecific translate="label">
+                                    <label>Payment from applicable countries</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-pagamentos-aplicáveis-aos-países-2" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>allowspecific</frontend_type>
+                                    <sort_order>40</sort_order>
+                                    <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/allowspecific</config_path>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </allowspecific>
+                                <specificcountry translate="label">
+                                    <label>Payment from specific countries</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-pagamentos-específicos-aos-países-2" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>multiselect</frontend_type>
+                                    <sort_order>50</sort_order>
+                                    <source_model>adminhtml/system_config_source_country</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/specificcountry</config_path>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <depends><allowspecific>1</allowspecific></depends>
+                                </specificcountry>
+                            </fields>
+                        </mozg_bradesco_shopfacil_boleto_group_1>
+                        <mozg_bradesco_shopfacil_boleto_group_2 type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Configurações para integração</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>200</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <cedente>
+                                    <label>Nome do beneficiário/cedente</label>
+                                    <comment><![CDATA[<a href="#" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/cedente</config_path>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </cedente>
+                                <carteira>
+                                    <label>Carteira</label>
+                                    <comment><![CDATA[<a href="#" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/carteira</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </carteira>
+                                <vencimento>
+                                    <label>Vencimento</label>
+                                    <comment><![CDATA[<a href="#" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/vencimento</config_path>
+                                    <sort_order>30</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </vencimento>
+                                <logotipo translate="label comment">
+                                    <label>Logo</label>
+                                    <comment><![CDATA[<a href="#" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>image</frontend_type>
+                                    <backend_model>adminhtml/system_config_backend_image</backend_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/logotipo</config_path>
+                                    <upload_dir config="system/filesystem/media" scope_info="1">theme</upload_dir>
+                                    <base_url type="media" scope_info="1">theme</base_url>
+                                    <sort_order>40</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </logotipo>
+                                <mensagem_cabecalho>
+                                    <label>Mensagem de cabeçalho exibida no topo do boleto</label>
+                                    <comment><![CDATA[<a href="#" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/mensagem_cabecalho</config_path>
+                                    <sort_order>50</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </mensagem_cabecalho>
+                                <instrucoes>
+                                    <label>Instruções (máximo de três linhas)</label>
+                                    <comment><![CDATA[<a href="#" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>textarea</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/instrucoes</config_path>
+                                    <sort_order>60</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </instrucoes>
+                            </fields>
+                        </mozg_bradesco_shopfacil_boleto_group_2>
+                        <mozg_bradesco_shopfacil_boleto_group_3 type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Advanced Settings</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>300</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <order_underpaid_status translate="label">
+                                    <label>Order status underpaid</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-não-pago" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/order_underpaid_status</config_path>
+                                    <sort_order>230</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </order_underpaid_status>
+                                <order_overpaid_status translate="label">
+                                    <label>Order status overpaid</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-pago-em-excesso" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/order_overpaid_status</config_path>
+                                    <sort_order>240</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </order_overpaid_status>
+                                <visible_type>
+                                    <label>Visible in</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-visível-em-2" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_VisibleType</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_boleto/visible_type</config_path>
+                                    <sort_order>250</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </visible_type>
+                            </fields>
+                        </mozg_bradesco_shopfacil_boleto_group_3>
+                    </fields>
+                </mozg_bradesco_shopfacil_boleto>
+                <!-- @tef only -->
+                <mozg_bradesco_shopfacil_eletronictransfer translate="label" module="mozg_bradesco">
+                    <label>Bradesco EletronicTransfer</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5060</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_base/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_bradesco_shopfacil_eletronictransfer/active</activity_path>
+                    <fields>
+                        <mozg_bradesco_shopfacil_eletronictransfer_group_1 type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Configurações básica nativa</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>100</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <active translate="label">
+                                    <label>Enabled</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ativar-3" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_eletronictransfer/active</config_path>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </active>
+                                <sort_order translate="label">
+                                    <label>Sort Order</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-ordem-de-exibição-3" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_eletronictransfer/sort_order</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </sort_order>
+                                <title translate="label">
+                                    <label>Title</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-título-3" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_eletronictransfer/title</config_path>
+                                    <sort_order>30</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </title>
+                                <allowspecific translate="label">
+                                    <label>Payment from applicable countries</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-pagamentos-aplicáveis-aos-países-3" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>allowspecific</frontend_type>
+                                    <sort_order>40</sort_order>
+                                    <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_eletronictransfer/allowspecific</config_path>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </allowspecific>
+                                <specificcountry translate="label">
+                                    <label>Payment from specific countries</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-pagamentos-específicos-aos-países-3" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>multiselect</frontend_type>
+                                    <sort_order>50</sort_order>
+                                    <source_model>adminhtml/system_config_source_country</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_eletronictransfer/specificcountry</config_path>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <depends><allowspecific>1</allowspecific></depends>
+                                </specificcountry>
+                            </fields>
+                        </mozg_bradesco_shopfacil_eletronictransfer_group_1>
+                        <mozg_bradesco_shopfacil_eletronictransfer_group_2 type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Configurações para integração</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>200</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+
+                            </fields>
+                        </mozg_bradesco_shopfacil_eletronictransfer_group_2>
+                        <mozg_bradesco_shopfacil_eletronictransfer_group_3 type="group" translate="label comment tooltip" module="mozg_bradesco">
+                            <label>Advanced Settings</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>300</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <order_underpaid_status translate="label">
+                                    <label>Order status underpaid</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-não-pago-1" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_eletronictransfer/order_underpaid_status</config_path>
+                                    <sort_order>230</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </order_underpaid_status>
+                                <order_overpaid_status translate="label">
+                                    <label>Order status overpaid</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-status-do-pedido-pago-em-excesso-1" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_eletronictransfer/order_overpaid_status</config_path>
+                                    <sort_order>240</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </order_overpaid_status>
+                                <visible_type>
+                                    <label>Visible in</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-bradesco-php_71/blob/master/README.md#-visível-em-3" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_VisibleType</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_eletronictransfer/visible_type</config_path>
+                                    <sort_order>250</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </visible_type>
+                            </fields>
+                        </mozg_bradesco_shopfacil_eletronictransfer_group_3>
+                    </fields>
+                </mozg_bradesco_shopfacil_eletronictransfer>
+                <!-- @Hpp only -->
+                <!--<mozg_bradesco_shopfacil_hpp translate="label" module="mozg_bradesco">
+                    <label>Bradesco HPP</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1040</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_base/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_bradesco_shopfacil_hpp/active</activity_path>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+            			    <tooltip>Set the sequence number of this payment method in the checkout. Payment methods with a higher sort order number will be displayed lower in the list.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <mozg_bradesco_shopfacil_hpp_advanced type="group" translate="label" module="mozg_bradesco">
+                            <label>Advanced Settings</label>
+                            <frontend_class>config-advanced</frontend_class>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>70</sort_order>
+                            <fields>
+                                <title translate="label">
+                                    <label>Title</label>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_hpp/title</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </title>
+                                <delivery_days translate="label">
+                                    <label>Days to Delivery</label>
+                                    <validate>validate-digits</validate>
+                                    <tooltip>How many days to be added to the current date for delivery. ONLY whole numbers allowed.</tooltip>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_bradesco_shopfacil_hpp/delivery_days</config_path>
+                                    <sort_order>70</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </delivery_days>
+                                <disable_hpptypes translate="label">
+                                    <label>Leave payment method selection on HPP</label>
+                                    <tooltip>If you set this to 'Yes', payment methods in the checkout won't be displayed and you will be redirected to the Mozg HPP to make the selection.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_hpp/disable_hpptypes</config_path>
+                                    <sort_order>90</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </disable_hpptypes>
+                                <payment_routines translate="label">
+                                    <label>Payment Flow Selection</label>
+                                    <tooltip>Mozg provides you with 2 types of payment routines. The Single-Page flow is dynamic and contains card validation and animations powered by JavaScript. The Multi-Page flow is static, but performs better on older browsers.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_bradesco/source_PaymentRoutines</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_hpp/payment_routines</config_path>
+                                    <sort_order>95</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <depends><disable_hpptypes>1</disable_hpptypes></depends>
+                                </payment_routines>
+                                <return_url_in_request>
+                                    <label>Return URL in request</label>
+                                    <tooltip>Set to 'Yes' by default. Sending the return URL in the payment request allows a single skin to also be used by multiple store views. Set to 'No' if you want to manually set which URL the shopper redirects to under Test Mozg Customer => Skins => Edit => Result URLs.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_hpp/return_url_in_request</config_path>
+                                    <sort_order>110</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </return_url_in_request>
+                                <disable_zero_total>
+                                    <label>Disable at zero grand total</label>
+                                    <tooltip>Disable this payment method in the checkout when the grand total of the quote is 0.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_bradesco_shopfacil_hpp/disable_zero_total</config_path>
+                                    <sort_order>120</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </disable_zero_total>
+                            </fields>
+                        </mozg_bradesco_shopfacil_hpp_advanced>
+                    </fields>
+                </mozg_bradesco_shopfacil_hpp>
+                <mozg_bradesco_shopfacil_ideal translate="label" module="mozg_bradesco">
+                    <label>HPP iDEAL - Requires Mozg HPP</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1070</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_bradesco/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_bradesco_shopfacil_ideal/active</activity_path>
+                    <fields>
+                        <show_ideal_logos>
+                            <label>Show iDEAL bank logos</label>
+                            <tooltip>Show iDEAL bank logos (radio buttons) instead of in a drop-down list.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_ideal_logos>
+                        <autoselect_stored_ideal_bank>
+                            <label>Auto select Ideal bank</label>
+                            <tooltip>If you have problems that the wrong ideal bank is selected turn this option off. This is a common problem in the onestepcheckout module</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>39</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </autoselect_stored_ideal_bank>
+                    </fields>
+                </mozg_bradesco_shopfacil_ideal>-->
+                <!-- @Openinvoice only -->
+                <!--<mozg_bradesco_shopfacil_openinvoice translate="label" module="mozg_bradesco">
+                    <label>HPP OpenInvoice - Requires Mozg HPP</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1080</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_bradesco/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_bradesco_shopfacil_openinvoice/active</activity_path>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+            			    <tooltip>Set the sequence number of this payment method in the checkout. Payment methods with a higher sort order number will be displayed lower in the list.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <openinvoicetypes translate="label">
+                            <label>OpenInvoice Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mozg_bradesco/source_openinvoiceType</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </openinvoicetypes>
+                        <gender_show translate="label">
+                            <label>Show Gender</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </gender_show>
+                        <dob_show translate="label">
+                            <label>Show Date of Birth</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>36</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </dob_show>
+                        <telephone_show translate="label">
+                            <label>Show Phonenumber</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>37</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </telephone_show>
+                        <shoppertype>
+                            <label>Allow Shopper information to be changed on HPP</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>38</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </shoppertype>
+                        <different_address_disable>
+                            <label>Disable on different billing and delivery addresses</label>
+                            <tooltip>Klarna will probably reject payments which have differing billing and delivery addresses. Setting this to 'Yes' will disable this payment method when that is the case.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </different_address_disable>
+                        <failed_attempt_disable>
+                            <label>Disable this payment method if first attempt is refused</label>
+                            <tooltip>If the first attempt is refused, don't show this as an payment option for the current quote.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </failed_attempt_disable>
+                        <ignore_second_address_field>
+                            <label>Ignore the second address line field</label>
+                            <tooltip>If you do not want to send the second line address field to Klarna set this setting to 'Yes'</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>47</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ignore_second_address_field>
+                        <allowspecific translate="label">
+                            <label>Payment from applicable countries</label>
+                            <frontend_type>allowspecific</frontend_type>
+                            <sort_order>49</sort_order>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Payment from specific countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>50</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><allowspecific>1</allowspecific></depends>
+                        </specificcountry>
+                        <ratepay_id>
+                            <label>RatePAY Device Ident SId</label>
+                            <tooltip>Unique RatePAY Id provided by RatePAY integration consultant</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>51</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends><openinvoicetypes>ratepay</openinvoicetypes></depends>
+                        </ratepay_id>
+                    </fields>
+                </mozg_bradesco_shopfacil_openinvoice>-->
+                <!-- @SEPA only -->
+                <!--<mozg_bradesco_shopfacil_sepa translate="label" module="mozg_bradesco">
+                    <label>SEPA</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1090</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_bradesco/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_bradesco_shopfacil_sepa/active</activity_path>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+            			    <tooltip>Set the sequence number of this payment method in the checkout. Payment methods with a higher sort order number will be displayed lower in the list.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <validate_iban>
+                            <label>Validate IBAN</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <tooltip>This is a basic validation on the IBAN number.</tooltip>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </validate_iban>
+                        <flow>
+                            <label>Flow</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mozg_bradesco/source_SepaFlow</source_model>
+                            <sort_order>35</sort_order>
+                            <tooltip>If you are not sure just leave it at 'Sale’. Sale means it is always immidiate capture with auth/cap it will follow the Capture Delay. If you want to enable 'Auth/Capt' for SEPA Direct Debit, please contact support@mozg.com</tooltip>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </flow>
+                        <allowspecific translate="label">
+                            <label>Payment from applicable countries</label>
+                            <frontend_type>allowspecific</frontend_type>
+                            <sort_order>50</sort_order>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Payment from pecific countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>60</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><allowspecific>1</allowspecific></depends>
+                        </specificcountry>
+                        <visible_type>
+                            <label>Visible in</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mozg_bradesco/source_VisibleType</source_model>
+                            <sort_order>70</sort_order>
+                            <tooltip>Where do you want to show this payment method in the backend of Magento or in the frontend for the shoppers</tooltip>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </visible_type>
+                    </fields>
+                </mozg_bradesco_shopfacil_sepa>-->
+                <!-- @Pos only -->
+                <!--<mozg_bradesco_shopfacil_pos translate="label" module="mozg_bradesco">
+                    <label>POS</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1110</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_bradesco/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_bradesco_shopfacil_pos/active</activity_path>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+            			    <tooltip>Set the sequence number of this payment method in the checkout. Payment methods with a higher sort order number will be displayed lower in the list.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <recurringtypes translate="label">
+                            <label>Agreement Type</label>
+                            <tooltip>You can set different value for POS because you have to have the permission of the customer</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mozg_bradesco/source_recurringType</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </recurringtypes>
+                        <add_receipt_order_lines translate="label">
+                            <label>Add orderlines to receipt</label>
+                            <tooltip>If you have the Mozg App configured to print to an external printer the orderlines can be printed on to the receipt if you turn this option on.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>33</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </add_receipt_order_lines>
+                        <enable_scanner translate="label">
+                            <label>Enable Scanner</label>
+                            <tooltip>If you enable this you have the possibility to scan products with a hand scanner on the shopping cart page and this will automatically add products to the shopping cart based on the same SKU name.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_scanner>
+                        <auto_submit_scanner>
+                            <label>Auto submit scanner</label>
+                            <tooltip>If you have a scanner that puss a enter command after scanning turn this setting on.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>36</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable_scanner>1</enable_scanner></depends>
+                        </auto_submit_scanner>
+                        <express_checkout>
+                            <label>Express checkout</label>
+                            <tooltip>This will show a checkout button on the shopping cart to directly do a POS payment without going to the checkout steps. You must be logged into your Magento account on the front-end to see the button.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>37</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </express_checkout>
+                        <express_checkout_kiosk_mode>
+                            <label>Kiosk mode</label>
+                            <tooltip>If you turn kiosk modus on it will not auto-complete the customers based on the filled in email address</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </express_checkout_kiosk_mode>
+                        <express_checkout_recurring>
+                            <label>Show Recurring Cards</label>
+                            <tooltip>This will show the recurring cards beneath the express checkout and makes it possible to do a recurring online payment by clicking on the card</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><express_checkout_kiosk_mode>0</express_checkout_kiosk_mode></depends>
+                        </express_checkout_recurring>
+                        <create_shipment>
+                            <label>Create Shipment</label>
+                            <tooltip>If you enable this there will be automatically be created a shipment if the invoice is created</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </create_shipment>
+                        <ip_filter>
+                            <label>IP filter</label>
+                            <tooltip>Enable IP filter let's you define an IP range when this payment method is visible</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mozg_bradesco/source_POS_IpFilter</source_model>
+                            <sort_order>57</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ip_filter>
+                        <ip_filter_ips>
+                            <label>IPs</label>
+                            <frontend_type>text</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>58</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><ip_filter>1</ip_filter></depends>
+                        </ip_filter_ips>
+                        <ip_filter_from>
+                            <label>IP From</label>
+                            <frontend_type>text</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>59</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><ip_filter>2</ip_filter></depends>
+                        </ip_filter_from>
+                        <ip_filter_to>
+                            <label>IP To</label>
+                            <frontend_type>text</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><ip_filter>2</ip_filter></depends>
+                        </ip_filter_to>
+                        <allowspecific translate="label">
+                            <label>Payment from applicable countries</label>
+                            <frontend_type>allowspecific</frontend_type>
+                            <sort_order>61</sort_order>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Payment from specific countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>70</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><allowspecific>1</allowspecific></depends>
+                        </specificcountry>
+                    </fields>
+                </mozg_bradesco_shopfacil_pos>
+                <mozg_bradesco_shopfacil_cash translate="label" module="mozg_bradesco">
+                    <label>CASH</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1120</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_bradesco/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_bradesco_shopfacil_cash/active</activity_path>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+            			    <tooltip>Set the sequence number of this payment method in the checkout. Payment methods with a higher sort order number will be displayed lower in the list.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <create_shipment>
+                            <label>Create Shipment</label>
+                            <tooltip>If you enable this there will be automatically be created a shipment if the invoice is created</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </create_shipment>
+                        <cash_express_checkout>
+                            <label>Cash Express checkout</label>
+                            <tooltip>This will show a checkout button on the shopping cart to directly do a Cash payment without going to the checkout steps. Make sure that you have Cash enabled on your skin and HPP payment method is enabled and correctly configured. You must be logged into your Magento account on the front-end to see the button</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>39</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cash_express_checkout>
+                        <cash_drawer>
+                            <label>Open Cash Drawer</label>
+                            <tooltip>Open the Cash drawer if you connect this to your printer this works for all Epson ePOS-Device printers</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cash_drawer>
+                        <cash_drawer_printer_ip>
+                            <label>IP address printer</label>
+                            <tooltip>Enter here the IP address of the printer where the cash drawer is connected to</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>41</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><cash_drawer>1</cash_drawer></depends>
+                        </cash_drawer_printer_ip>
+                        <cash_drawer_printer_port>
+                            <label>Printer port</label>
+                            <tooltip>Enter here the port number of the printer where the cash drawer is connected to</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>42</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><cash_drawer>1</cash_drawer></depends>
+                        </cash_drawer_printer_port>
+                        <cash_drawer_printer_device_id>
+                            <label>Printer Device ID</label>
+                            <tooltip>Enter here the deviceID of the printer where the cash drawer is connected to</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>43</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><cash_drawer>1</cash_drawer></depends>
+                        </cash_drawer_printer_device_id>
+                        <ip_filter>
+                            <label>IP filter</label>
+                            <tooltip>Enable IP filter let's you define an IP range when this payment method is visible</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ip_filter>
+                        <ip_filter_from>
+                            <label>IP From</label>
+                            <frontend_type>text</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>46</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><ip_filter>1</ip_filter></depends>
+                        </ip_filter_from>
+                        <ip_filter_to>
+                            <label>IP To</label>
+                            <frontend_type>text</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>47</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><ip_filter>1</ip_filter></depends>
+                        </ip_filter_to>
+                        <visible_type>
+                            <label>Visible in</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mozg_bradesco/source_VisibleType</source_model>
+                            <sort_order>80</sort_order>
+                            <tooltip>Where do you want to show this payment method in the backend of Magento or in the frontend for the shoppers</tooltip>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </visible_type>
+                        <allowspecific translate="label">
+                            <label>Payment from applicable countries</label>
+                            <frontend_type>allowspecific</frontend_type>
+                            <sort_order>90</sort_order>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Payment from specific countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>100</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><allowspecific>1</allowspecific></depends>
+                        </specificcountry>
+                    </fields>
+                </mozg_bradesco_shopfacil_cash>
+                <mozg_bradesco_shopfacil_pay_by_mail translate="label" module="mozg_bradesco">
+                    <label>Pay By Mail</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1130</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_bradesco/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_bradesco_shopfacil_pay_by_mail/active</activity_path>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+            			    <tooltip>Set the sequence number of this payment method in the checkout. Payment methods with a higher sort order number will be displayed lower in the list.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <session_validity>
+                            <label>Session Validity</label>
+                            <tooltip>How many days do you want this payment page to be active</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </session_validity>
+                        <skin_code translate="label">
+                            <label>Skin Code</label>
+                            <tooltip>The skin code you want to use leave this empty if you want to use the same as Mozg HPP settings</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </skin_code>
+                        <secret_wordt translate="label">
+                            <label>HMAC Key for Test</label>
+                            <tooltip>Should match with the HMAC test key in the Mozg Customer Area. Fill this in if you are using a different skin then defined in Mozg HPP</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </secret_wordt>
+                        <secret_wordp translate="label">
+                            <label>HMAC Key for Live</label>
+                            <tooltip>Should match with the HMAC live key in the Mozg Customer Area. Fill this in if you are using a different skin then defined in Mozg HPP</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </secret_wordp>
+                        <visible_type>
+                            <label>Visible in</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mozg_bradesco/source_VisibleType</source_model>
+                            <sort_order>70</sort_order>
+                            <tooltip>Where do you want to show this payment method in the backend of Magento or in the frontend for the shoppers</tooltip>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </visible_type>
+                    </fields>
+                </mozg_bradesco_shopfacil_pay_by_mail>-->
+                <!-- @Apple Pay only -->
+                <!--<mozg_bradesco_shopfacil_apple_pay translate="label" module="mozg_bradesco">
+                    <label>Apple Pay</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1140</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_bradesco/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_bradesco_shopfacil_apple_pay/active</activity_path>
+                    <comment><![CDATA[
+                               You need to configure Apple Pay on the Mozg Platform. Please contact support@mozg.com and provide us CSR + merchant Identifier.<br />
+                               Apple Pay will only be visible if you are running on IOS10 and higher. You need to browse on a Safari browser and you need to have active credit cards in your wallet.
+                            ]]></comment>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+                            <tooltip>Set the sequence number of this payment method in the checkout. Payment methods with a higher sort order number will be displayed lower in the list.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <merchant_identifier_test>
+                            <label>Test: Apple Merchant Identifier</label>
+                            <tooltip>You can retrieve this from you Apple Account.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </merchant_identifier_test>
+                        <merchant_identifier_live>
+                            <label>Live: Apple Merchant Identifier</label>
+                            <tooltip>You can retrieve this from you Apple Account.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </merchant_identifier_live>
+                        <full_path_location_pem_file_test>
+                            <label>Test: PEM File location</label>
+                            <tooltip>You need to generate a pem file from the apple certificate. You need to upload this to your webserver and define the full path location here.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </full_path_location_pem_file_test>
+                        <full_path_location_pem_file_live>
+                            <label>Live: PEM File location</label>
+                            <tooltip>You need to generate a pem file from the apple certificate. You need to upload this to your webserver and define the full path location here.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </full_path_location_pem_file_live>
+                        <shipping_type>
+                            <label>Shipping Type</label>
+                            <tooltip>Title of the shipping method selection on the payments sheet.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mozg_bradesco/source_applePayShippingType</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </shipping_type>
+                        <allow_quest_checkout>
+                            <label>Allow Guest Checkout</label>
+                            <tooltip>Show Apple Pay icon if user is not logged in. The user has the option to set his own contact details and shipping\billing address.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allow_quest_checkout>
+                        <change_address>
+                            <label>Option to change address details in Apple Payment Sheet</label>
+                            <frontend_type>select</frontend_type>
+                            <tooltip>Do you want to offer the customer that is logged in to change his address in the Apple Payment Sheet?</tooltip>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><allow_quest_checkout>0</allow_quest_checkout></depends>
+                        </change_address>
+                        <show_in_payment_step_checkout>
+                            <label>Show payment method as well in the Payment Information step of the checkout</label>
+                            <tooltip>If you set this to NO this will not be shown as a payment method option in the checkout steps. It will be visible on the product and shopping basket page.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_in_payment_step_checkout>
+                        <show_outside_of_checkout>
+                            <label>Show Apple buy button on product and cart page</label>
+                            <tooltip>Set this to 'no' if you have advanced options for, for example, shipping that are not supported by the Apple Pay checkout forcing the user to first go through the Magento Checkout</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <show_in_payment_step_checkout>1</show_in_payment_step_checkout>
+                            </depends>
+                        </show_outside_of_checkout>
+                    </fields>
+                </mozg_bradesco_shopfacil_apple_pay>-->
+                <!--<mozg_bradesco_shopfacil_multibanco translate="label" module="mozg_bradesco">
+                    <label>Multibanco</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1150</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_bradesco/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_bradesco_shopfacil_multibanco/active</activity_path>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+                            <tooltip>Set the sequence number of this payment method in the checkout. Payment methods with a higher sort order number will be displayed lower in the list.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <visible_type>
+                            <label>Visible in</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mozg_bradesco/source_VisibleType</source_model>
+                            <sort_order>40</sort_order>
+                            <tooltip>Determine the visibility of this payment method in the frontend and/or backend of Magento.</tooltip>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </visible_type>
+                    </fields>
+                </mozg_bradesco_shopfacil_multibanco>-->
+            </groups>
+        </payment>
+    </sections>
+</config>

@@ -1,0 +1,14 @@
+<?php
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php if ($_info = $this->getInfo()): ?>
+    <?php $paymentMethod = $_info->getCcType() ?>
+    <?php if (!empty($paymentMethod)): ?>
+        <?php echo $this->__('Payment Method: %s', $paymentMethod) ?> {{pdf_row_separator}}
+    <?php else: ?>
+        <?php echo $this->getMethod()->getTitle() ?> {{pdf_row_separator}}
+    <?php endif; ?>
+<?php endif; ?>

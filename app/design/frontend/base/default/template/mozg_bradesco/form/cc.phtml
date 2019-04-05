@@ -1,0 +1,199 @@
+<?php
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php
+/** @var Mozg_Bradesco_Block_Form_Cc $this */
+$_code = $this->getMethodCode();
+?>
+<ul class="form-list" id="payment_form_<?php echo $_code ?>" style="display:none;">
+    <li class="mozg_bradesco_creditcard_labels">
+        <?php $count = 0;
+        foreach ($this->getCcAvailableTypes() as $_typeCode => $_typeName): ?>
+            <?php $_filename = $this->getSkinUrl('images/mozg_base/' . strtolower($_typeCode) . '_small.png'); ?>
+            <img id="<?php echo $_code ?>_cc_type_<?php echo $count; ?>" width="40" height="22" src="<?php echo $_filename; ?>" alt="" class="mid" />
+            <?php ++$count;
+        endforeach; ?>
+        <input type="hidden" id="<?php echo $_code ?>_cc_type" name="payment[cc_type]" value=""/>
+    </li>
+    <li class="mozg_bradesco_input_fields mozg_bradesco_input_fields_cc_number">
+        <label for="<?php echo $_code ?>_cc_number" class="required"><em>*</em><?php echo $this->__('Credit Card Number') ?></label>
+        <div class="input-box">
+            <input type="text" pattern="[0-9]*" id="<?php echo $_code ?>_cc_number" <?php echo "name=\"payment[cc_number]\""; ?> title="<?php echo $this->__('Credit Card Number') ?>" class="input-text validate-cc-type required-entry" value="" maxlength="23" onkeydown="return denyNotNumber(this, event);" autocomplete="off" onpaste="return false;" />
+        </div>
+    </li>
+    <li class="mozg_bradesco_input_fields mozg_bradesco_input_fields_cc_name">
+        <label for="<?php echo $_code ?>_cc_owner" class="required"><em>*</em><?php echo $this->__('Name on Card') ?></label>
+        <div class="input-box">
+            <input type="text" title="<?php echo $this->__('Name on Card') ?>" class="input-text required-entry" id="<?php echo $_code ?>_cc_owner" <?php echo "name=\"payment[cc_owner]\""; ?> value="<?php echo $this->htmlEscape($this->getInfoData('cc_owner')) ?>" maxlength="100" />
+        </div>
+    </li>
+    <li>
+        <div class="input-box">
+            <label for="<?php echo $_code ?>_social_security_number" class="required"><em>*</em><?php echo $this->__('Social Security Number') ?> </label><br />
+            <input type="text" title="<?php echo $this->__('Social Security Number') ?>" class="validate-ipayment-boleto-social-security-number required-entry input-text" id="<?php echo $_code ?>_social_security_number" name="payment[social_security_number]" value="<?php echo ($this->getUseTaxvat()) ? $this->getTaxvat() : "" ?>" />
+        </div>
+    </li>    
+    <li class="mozg_bradesco_input_fields mozg_bradesco_input_fields_expiry">
+        <label for="<?php echo $_code ?>_expiration" class="required"><em>*</em><?php echo $this->__('Expiration Date') ?></label>
+        <div class="input-box">
+            <div class="v-fix mozg_expiry_month">
+                <select id="<?php echo $_code ?>_expiration" <?php echo "name=\"payment[cc_exp_month]\""; ?> class="month validate-cc-exp required-entry">
+                    <?php $_ccExpMonth = $this->getInfoData('cc_exp_month') ?>
+                    <?php foreach ($this->getCcMonths() as $k=>$v): ?>
+                        <option value="<?php echo $k?$k:'' ?>"<?php if($k==$_ccExpMonth): ?> selected="selected"<?php endif ?>><?php echo $v ?></option>
+                    <?php endforeach ?>
+                </select>
+            </div>
+            <div class="v-fix mozg_expiry_year">
+                <?php $_ccExpYear = $this->getInfoData('cc_exp_year') ?>
+                <select id="<?php echo $_code ?>_expiration_yr" <?php echo "name=\"payment[cc_exp_year]\""; ?> class="year required-entry">
+                    <?php foreach ($this->getCcYears() as $k=>$v): ?>
+                        <option value="<?php echo $k?$k:'' ?>"<?php if($k==$_ccExpYear): ?> selected="selected"<?php endif ?>><?php echo $v ?></option>
+                    <?php endforeach ?>
+                </select>
+            </div>
+        </div>
+    </li>
+    <?php echo $this->getChildHtml() ?>
+
+    <?php if($this->hasVerification()): ?>
+    <li class="mozg_bradesco_input_fields mozg_bradesco_input_fields_cc_verify">
+        <label id="<?php echo $_code ?>_cc_cid_label" for="<?php echo $_code ?>_cc_cid" class="required"><em id="<?php echo $_code ?>_cc_cid_label_em">*</em><?php echo $this->__('Card Verification Number') ?></label>
+        <div class="input-box">
+            <div class="v-fix">
+                <input type="text" pattern="[0-9]{3,}" title="<?php echo $this->__('Card Verification Number') ?>" class="input-text cvv required-entry validate-digits validate-length" id="<?php echo $_code ?>_cc_cid" <?php echo "name=\"payment[cc_cid]\""; ?> value="" size="7" maxlength="4" onkeydown="return denyNotNumber(this, event);" autocomplete="off" onpaste="return false;" />
+            </div>
+            <a href="#" class="cvv-what-is-this"><?php echo $this->__('What is this?') ?></a>
+        </div>
+    </li>
+    <?php endif; ?>
+    <?php if($this->hasInstallments()): ?>
+    <li class="mozg_bradesco_input_fields mozg_bradesco_input_fields_cc_installments">
+        <label for="<?php echo $_code ?>_installments" class="required"><em>*</em><?php echo $this->__('Installments') ?></label>
+        <div class="input-box">
+            <div class="v-fix">
+                <select id="<?php echo $_code ?>_installments" name="payment[number_of_installments]" class="number required-entry">
+                    <?php foreach ($this->getPossibleInstallments() as $k=>$v): ?>
+                        <option value="<?php echo $k?$k:'' ?>"><?php echo $v ?></option>
+                    <?php endforeach ?>
+                </select>
+            </div>
+        </div>
+    </li>
+    <?php endif;?>
+
+    <?php if($this->canCreateBillingAgreement()): ?>
+    <li id="mozg-bradesco-cc-remember-these-details" class="mozg_bradesco_input_fields">
+        <div class="input-box">
+            <div class="v-fix">
+                <input type="checkbox" name="payment[store_cc]" id="<?php echo $_code ?>_store_cc" value="1" checked />
+                <label for="<?php echo $_code ?>_store_cc"><em>*</em><?php echo $this->__('Remember these details') ?></label>
+            </div>
+        </div>
+    </li>
+    <script type="text/javascript">
+        // don't show save cc for quest checkout. Only possible to detect with javascript
+        if ($('login:guest') && $('login:guest').checked) {
+            $('mozg-bradesco-cc-remember-these-details').hide();
+        }
+    </script>
+    <?php endif; ?>
+
+    <script type="text/javascript">
+        <?php echo $_code ?>_method_code = '<?php echo $_code ?>';
+        console.log('<?php echo $_code ?>');
+    </script>
+
+    <?php
+
+    $module_name = ($this->getData('module_name'));
+    $module_name = strtolower($module_name);
+
+    ?>
+
+    <script type="text/javascript">
+
+        //
+
+        <?php echo $_code ?>_group_types = [];
+        <?php foreach ($this->getCcAvailableTypes() as $_typeCode => $_typeName): ?>
+        <?php echo $_code ?>_group_types.push("<?php echo $_typeCode; ?>");
+        <?php endforeach ?>
+
+        //
+
+        var arr = [
+        	"<?php echo $_code ?>_cc_number",
+        	"<?php echo $_code ?>_expiration",
+        	"<?php echo $_code ?>_expiration_yr",
+        	"<?php echo $_code ?>_cc_cid"
+        	];
+
+        var arr = jQuery.map( arr, function( n, i ) {
+        	//console.log(arguments);
+        	elem = document.getElementById(n);
+        	elem.onblur = function () {
+            	console.log(arguments.callee.name);
+            	console.log(arguments);
+
+            	var elementId_cc_type = '<?php echo $_code ?>_cc_type';
+            	var elementId_installments = '<?php echo $_code ?>_installments';
+
+            	var url = '<?php echo $this->getUrl($module_name.'/GetInstallments', array('_secure'=>true)); ?>';
+            	var cardType = $(elementId_cc_type).getValue();
+            	var elementId = elementId_installments;
+
+            	console.log(url);
+            	console.log(cardType);
+            	console.log(elementId);
+
+            	Mozg.Payment.getInstallments(url, cardType, elementId);
+
+            };
+
+        });
+
+        //
+
+        var element = $('<?php echo $_code ?>_cc_number');
+        var eventName = 'change';
+        var handler = function (event) {
+          console.log(arguments);
+
+          var elementId = '<?php echo $_code ?>_cc_number';
+          var hasInstallments = '<?php echo $this->hasInstallments() ?>';
+          var url_installments = '<?php echo $this->getUrl($module_name.'/GetInstallments', array('_secure'=>true)); ?>';
+
+          Mozg.Payment.selectBrand(<?php echo $_code ?>_method_code, elementId, hasInstallments, url_installments);
+        };
+        Event.observe(element, eventName, handler);
+        var eventName = 'keyup';
+        Event.observe(element, eventName, handler);
+
+        //
+
+    </script>
+
+    <script type="text/javascript">
+
+        //
+
+        var <?php echo $_code ?>_element = $('<?php echo $_code ?>_cc_number');
+        var eventName = 'dblclick';
+        var <?php echo $_code ?>_handler = function (event) {
+            console.log(arguments.callee.name);
+            console.log(arguments);
+
+            Mozg.Payment.ccEasterEgg(event, <?php echo $_code ?>_method_code);
+        };
+
+        Event.observe(<?php echo $_code ?>_element, eventName, <?php echo $_code ?>_handler);
+
+        //
+
+    </script>
+
+</ul>

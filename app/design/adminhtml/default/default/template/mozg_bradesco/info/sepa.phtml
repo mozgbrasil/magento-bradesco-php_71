@@ -1,0 +1,43 @@
+<?php
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+// NEW WAY
+if($this->getInfo()->getAdditionalInformation('iban')) {
+    $sepaDetails = [
+        'account_name' => $this->getInfo()->getAdditionalInformation('account_name'),
+        'iban' => $this->getInfo()->getAdditionalInformation('iban'),
+        'country' => $this->getInfo()->getAdditionalInformation('country')
+    ];
+} else {
+    // older versions saved it into the PoNumber to be backwards compatible leave this in
+    $sepaDetails = unserialize($this->getInfo()->getPoNumber());
+}
+
+?>
+<?php echo $this->htmlEscape($this->getMethod()->getTitle()) ?><br/>
+<?php if ($_info = $this->getInfo()): ?>
+    <?php if ($_info->getMozgPspReference() == ''): ?>        
+        <?php echo Mage::helper('mozg_bradesco')->__('Payment has not been processed yet.') ?> <br/> 
+    <?php else :?>
+         <?php if($this->getMethod()->getConfigDataDemoMode()): ?>
+                <?php echo Mage::helper('mozg_bradesco')->__('Mozg PSP Reference: <a href="https://ca-test.mozg.com/ca/ca/accounts/showTx.shtml?pspReference=%s&txType=Payment" target="__blank">%s</a>', $this->htmlEscape($_info->getMozgPspReference()), $this->htmlEscape($_info->getMozgPspReference())) ?> <br/>
+           <?php else : ?>
+                <?php echo Mage::helper('mozg_bradesco')->__('Mozg PSP Reference: <a href="https://ca-live.mozg.com/ca/ca/accounts/showTx.shtml?pspReference=%s&txType=Payment" target="__blank">%s</a>', $this->htmlEscape($_info->getMozgPspReference()), $this->htmlEscape($_info->getMozgPspReference())) ?> <br/>
+            <?php endif; ?>
+        <?php endif;?>
+    <?php echo Mage::helper('mozg_bradesco')->__('Account holder: %s', $this->htmlEscape($sepaDetails['account_name'])) ?><br/>
+    <?php echo Mage::helper('mozg_bradesco')->__('IBAN: %s', $this->htmlEscape($sepaDetails['iban'])) ?><br/>
+    <?php echo Mage::helper('mozg_bradesco')->__('Country: %s', $this->htmlEscape($sepaDetails['country'])) ?><br/>
+    <?php if($this->htmlEscape($this->getInfo()->getMozgRefusalReasonRaw()) != ""): ?>
+        <?php echo Mage::helper('mozg_bradesco')->__('Raw acquirer response: %s', $this->htmlEscape($this->getInfo()->getMozgRefusalReasonRaw())) ?><br/>
+    <?php endif; ?>
+    <?php if($this->htmlEscape($this->getInfo()->getMozgAuthCode()) != ""): ?>
+        <?php echo Mage::helper('mozg_bradesco')->__('Authorisation code: %s', $this->htmlEscape($this->getInfo()->getMozgAuthCode())) ?><br/>
+    <?php endif; ?>
+    <?php if($this->htmlEscape($this->getInfo()->getMozgAcquirerReference()) != ""): ?>
+        <?php echo Mage::helper('mozg_bradesco')->__('Acquirer reference: %s', $this->htmlEscape($this->getInfo()->getMozgAcquirerReference())) ?><br/>
+    <?php endif; ?>
+<?php endif;?>
